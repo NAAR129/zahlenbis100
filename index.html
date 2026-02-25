@@ -1,0 +1,2273 @@
+<!DOCTYPE html>
+
+<html lang="de">
+
+<head>
+
+  <meta charset="UTF-8" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <title>Zahlen bis 100 – Rechenbilder & Rechenwege (1./2. Klasse)</title>
+
+  <style>
+
+    :root{
+
+      --bg1:#fff7e6;
+
+      --bg2:#eaf7ff;
+
+      --ink:#22314a;
+
+      --muted:#5a6a86;
+
+      --shadow: 0 10px 24px rgba(34,49,74,.12);
+
+      --radius: 18px;
+
+      --accent:#ff6b6b;
+
+      --accent2:#4dabf7;
+
+      --accent3:#51cf66;
+
+      --accent4:#ffd43b;
+
+      --font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+
+    }
+
+    *{box-sizing:border-box}
+
+    body{
+
+      margin:0;
+
+      font-family:var(--font);
+
+      color:var(--ink);
+
+      background:
+
+        radial-gradient(900px 500px at 10% 10%, rgba(255,214,59,.35), transparent 60%),
+
+        radial-gradient(900px 500px at 90% 20%, rgba(77,171,247,.30), transparent 55%),
+
+        radial-gradient(900px 500px at 60% 95%, rgba(81,207,102,.22), transparent 50%),
+
+        linear-gradient(135deg, var(--bg1), var(--bg2));
+
+      min-height:100vh;
+
+    }
+
+    header{
+
+      padding: 22px 18px 10px;
+
+      max-width: 1100px;
+
+      margin: 0 auto;
+
+      display:flex;
+
+      gap:14px;
+
+      align-items:center;
+
+      justify-content:space-between;
+
+      flex-wrap:wrap;
+
+    }
+
+    .brand{display:flex;gap:12px;align-items:center;}
+
+    .logo{
+
+      width:52px;height:52px;border-radius:16px;
+
+      background:
+
+        radial-gradient(circle at 30% 30%, #fff, rgba(255,255,255,.2) 38%, transparent 40%),
+
+        linear-gradient(135deg, var(--accent), var(--accent2));
+
+      box-shadow: var(--shadow);
+
+      position:relative; overflow:hidden;
+
+    }
+
+    .logo::after{
+
+      content:""; position:absolute; inset:-20px;
+
+      background:
+
+        radial-gradient(circle at 40% 40%, rgba(255,255,255,.65), transparent 45%),
+
+        radial-gradient(circle at 70% 70%, rgba(255,255,255,.35), transparent 50%);
+
+      transform: rotate(18deg);
+
+    }
+
+    h1{margin:0;font-size:clamp(18px, 2.8vw, 28px);line-height:1.15;letter-spacing:.2px;}
+
+    .subtitle{margin:4px 0 0;color:var(--muted);font-size:14px;}
+
+ 
+
+    main{
+
+      max-width: 1100px;
+
+      margin: 0 auto;
+
+      padding: 10px 18px 26px;
+
+      display:grid;
+
+      grid-template-columns: 1.05fr .95fr;
+
+      gap: 14px;
+
+    }
+
+    @media (max-width: 980px){ main{ grid-template-columns:1fr; } }
+
+ 
+
+    .card{
+
+      background: rgba(255,255,255,.86);
+
+      border: 1px solid rgba(34,49,74,.10);
+
+      border-radius: var(--radius);
+
+      box-shadow: var(--shadow);
+
+      overflow:hidden;
+
+    }
+
+    .cardHeader{
+
+      padding: 14px 16px 10px;
+
+      display:flex;
+
+      align-items:flex-start;
+
+      justify-content:space-between;
+
+      gap:10px;
+
+      border-bottom: 1px dashed rgba(34,49,74,.14);
+
+      background:
+
+        linear-gradient(135deg, rgba(255,107,107,.08), rgba(77,171,247,.08));
+
+    }
+
+    .cardHeader h2{margin:0;font-size:18px;}
+
+    .cardHeader p{margin:5px 0 0;color:var(--muted);font-size:13px;line-height:1.35;}
+
+    .cardBody{ padding: 14px 16px 16px; }
+
+ 
+
+    .pillNote{
+
+      display:inline-flex; gap:8px; align-items:center;
+
+      padding:8px 10px;border-radius:999px;
+
+      border:1px solid rgba(34,49,74,.12);
+
+      background: rgba(255,255,255,.75);
+
+      box-shadow: 0 8px 18px rgba(34,49,74,.06);
+
+      font-size:13px;
+
+      user-select:none;
+
+      white-space:nowrap;
+
+    }
+
+ 
+
+    .grid2{display:grid;grid-template-columns: 1fr 1fr;gap: 10px;}
+
+    @media (max-width: 520px){ .grid2{ grid-template-columns:1fr; } }
+
+    label{font-size: 13px;color: var(--muted);display:block;margin: 0 0 6px;}
+
+    input[type="number"]{
+
+      width: 100%;
+
+      padding: 10px 12px;
+
+      border: 1px solid rgba(34,49,74,.18);
+
+      border-radius: 12px;
+
+      background: rgba(255,255,255,.92);
+
+      font-size: 15px;
+
+      outline:none;
+
+      transition:.15s ease;
+
+    }
+
+    input[type="number"]:focus{
+
+      border-color: rgba(77,171,247,.8);
+
+      box-shadow: 0 0 0 4px rgba(77,171,247,.18);
+
+    }
+
+ 
+
+    .ops{display:flex;gap:8px;flex-wrap:wrap;}
+
+    .opBtn{
+
+      flex:1 1 110px;
+
+      padding: 10px 10px;
+
+      border-radius: 14px;
+
+      border: 1px solid rgba(34,49,74,.12);
+
+      background: rgba(255,255,255,.75);
+
+      cursor:pointer;
+
+      font-weight:900;
+
+      display:flex; align-items:center; justify-content:center; gap:8px;
+
+      transition:.15s ease;
+
+      user-select:none;
+
+    }
+
+    .opBtn:hover{ transform: translateY(-1px); }
+
+    .opBtn.active{
+
+      border-color: rgba(34,49,74,.35);
+
+      background: rgba(255,255,255,.96);
+
+      transform: translateY(-1px);
+
+    }
+
+ 
+
+    .actions{display:flex;gap:10px;flex-wrap:wrap;margin-top: 12px;}
+
+    button{
+
+      border:none; cursor:pointer;
+
+      padding: 10px 12px;
+
+      border-radius: 14px;
+
+      font-weight:900;
+
+      font-size: 14px;
+
+      transition:.15s ease;
+
+      display:inline-flex; align-items:center; gap:8px;
+
+      user-select:none;
+
+    }
+
+    button:active{ transform: translateY(1px); }
+
+    .primary{
+
+      background: linear-gradient(135deg, var(--accent2), #7cc3ff);
+
+      color:#07335a;
+
+      box-shadow: 0 12px 22px rgba(77,171,247,.28);
+
+    }
+
+    .secondary{
+
+      background: linear-gradient(135deg, var(--accent4), #ffe891);
+
+      color:#4a3a00;
+
+      box-shadow: 0 12px 22px rgba(255,212,59,.25);
+
+    }
+
+    .ghost{
+
+      background: rgba(255,255,255,.75);
+
+      border: 1px solid rgba(34,49,74,.12);
+
+      color: var(--ink);
+
+    }
+
+ 
+
+    .divider{height:1px;background: rgba(34,49,74,.10);margin: 12px 0;}
+
+ 
+
+    .checkArea{
+
+      margin-top: 12px;
+
+      padding: 12px;
+
+      border-radius: 16px;
+
+      border: 1px dashed rgba(34,49,74,.18);
+
+      background: rgba(255,255,255,.75);
+
+    }
+
+    .resultRow{
+
+      display:flex; gap:10px; flex-wrap:wrap; align-items:flex-end;
+
+      margin-top: 8px;
+
+    }
+
+    .resultRow > *{ flex: 1 1 200px; }
+
+    .feedback{
+
+      margin-top: 10px;
+
+      padding: 10px 12px;
+
+      border-radius: 14px;
+
+      border: 1px solid rgba(34,49,74,.12);
+
+      background: rgba(255,255,255,.92);
+
+      display:none;
+
+    }
+
+    .feedback.show{ display:block; }
+
+    .good{ border-color: rgba(81,207,102,.45) !important; background: rgba(81,207,102,.12) !important; }
+
+    .bad{ border-color: rgba(255,107,107,.45) !important; background: rgba(255,107,107,.10) !important; }
+
+    .tinyNote{font-size: 12px;color: var(--muted);margin-top: 8px;line-height: 1.35;}
+
+ 
+
+    .kbd{
+
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+
+      font-size: 12px;
+
+      padding: 2px 8px;
+
+      border-radius: 999px;
+
+      border: 1px solid rgba(34,49,74,.14);
+
+      background: rgba(255,255,255,.85);
+
+      color: var(--ink);
+
+      display:inline-block;
+
+    }
+
+ 
+
+    .sceneWrap{
+
+      margin-top: 12px;
+
+      padding: 12px;
+
+      border-radius: 16px;
+
+      border: 1px solid rgba(34,49,74,.10);
+
+      background: rgba(255,255,255,.78);
+
+      overflow:hidden;
+
+    }
+
+    .sceneTop{
+
+      display:flex;
+
+      gap:10px;
+
+      align-items:center;
+
+      justify-content:space-between;
+
+      flex-wrap:wrap;
+
+      margin-bottom: 10px;
+
+    }
+
+    .badge{
+
+      padding: 6px 10px;
+
+      border-radius: 999px;
+
+      font-weight:900;
+
+      font-size: 13px;
+
+      background: rgba(255,107,107,.12);
+
+      border: 1px solid rgba(255,107,107,.25);
+
+      user-select:none;
+
+      white-space:nowrap;
+
+    }
+
+    .eq{
+
+      display:flex;
+
+      align-items:center;
+
+      gap:10px;
+
+      flex-wrap:wrap;
+
+      justify-content:flex-end;
+
+      color: rgba(34,49,74,.85);
+
+      font-weight:950;
+
+    }
+
+    .eq .num{
+
+      font-size: 18px;
+
+      padding: 4px 10px;
+
+      border-radius: 999px;
+
+      border: 1px solid rgba(34,49,74,.12);
+
+      background: rgba(255,255,255,.85);
+
+    }
+
+    .eq .op{
+
+      width: 34px; height: 34px;
+
+      border-radius: 14px;
+
+      display:flex; align-items:center; justify-content:center;
+
+      background: rgba(255,212,59,.35);
+
+      border: 1px solid rgba(34,49,74,.12);
+
+    }
+
+ 
+
+    .stepsHeader{
+
+      margin-top: 12px;
+
+      display:flex;
+
+      align-items:center;
+
+      justify-content:space-between;
+
+      gap:10px;
+
+      flex-wrap:wrap;
+
+    }
+
+    .bulbBtn{
+
+      background: linear-gradient(135deg, rgba(255,212,59,.95), rgba(255,107,107,.85));
+
+      color:#3a2400;
+
+      box-shadow: 0 12px 22px rgba(255,212,59,.22);
+
+      border-radius: 999px;
+
+      padding: 10px 12px;
+
+      display:inline-flex;
+
+      align-items:center;
+
+      gap:10px;
+
+      font-weight:950;
+
+    }
+
+    .bulb{
+
+      width: 28px; height: 28px;
+
+      border-radius: 12px;
+
+      display:flex; align-items:center; justify-content:center;
+
+      background: rgba(255,255,255,.85);
+
+      border: 1px solid rgba(34,49,74,.12);
+
+      box-shadow: 0 10px 18px rgba(34,49,74,.10);
+
+    }
+
+ 
+
+    .steps{
+
+      margin-top: 10px;
+
+      display:none;
+
+      gap:10px;
+
+    }
+
+    .steps.show{ display:grid; }
+
+ 
+
+    .step{
+
+      padding: 12px;
+
+      border-radius: 16px;
+
+      background: rgba(255,255,255,.90);
+
+      border: 1px solid rgba(34,49,74,.10);
+
+      display:flex;
+
+      gap:10px;
+
+      align-items:flex-start;
+
+      box-shadow: 0 12px 22px rgba(34,49,74,.08);
+
+    }
+
+    .stepNum{
+
+      width:34px;height:34px;border-radius: 12px;
+
+      display:flex;align-items:center;justify-content:center;
+
+      font-weight:950;
+
+      background: rgba(77,171,247,.16);
+
+      border: 1px solid rgba(77,171,247,.30);
+
+      flex: 0 0 auto;
+
+      user-select:none;
+
+    }
+
+    .stepText{margin:0;color: var(--ink);font-size: 14px;line-height:1.4;}
+
+    .mini{color: var(--muted);font-size: 13px;margin-top:4px;}
+
+ 
+
+    footer{
+
+      max-width: 1100px;
+
+      margin: 0 auto;
+
+      padding: 0 18px 24px;
+
+      color: var(--muted);
+
+      font-size: 12px;
+
+      line-height:1.4;
+
+    }
+
+  </style>
+
+</head>
+
+ 
+
+<body>
+
+<header>
+
+  <div class="brand">
+
+    <div class="logo" aria-hidden="true"></div>
+
+    <div>
+
+      <h1>Zahlen bis 100 – Rechenbilder & Rechenwege</h1>
+
+      <div class="subtitle">1./2. Klasse • Symbole wechseln • Hilfe-Schritte erst nach 💡 • Lösung bleibt geheim</div>
+
+    </div>
+
+  </div>
+
+  <div class="pillNote">
+
+    <span aria-hidden="true">🎒</span>
+
+    <span><b>Zahlenraum:</b> 0–100</span>
+
+  </div>
+
+</header>
+
+ 
+
+<main>
+
+  <!-- LEFT -->
+
+  <section class="card" aria-label="Aufgabe erstellen und üben">
+
+    <div class="cardHeader">
+
+      <div>
+
+        <h2>1) Aufgabe erstellen</h2>
+
+        <p>Zahlen eingeben, Rechenart wählen, Rechenbild anzeigen. Hilfe-Schritte erscheinen erst, wenn du 💡 antippst.</p>
+
+      </div>
+
+      <div class="pillNote">
+
+        <span aria-hidden="true">💡</span>
+
+        <span><b>💡</b> = Hilfe</span>
+
+      </div>
+
+    </div>
+
+ 
+
+    <div class="cardBody">
+
+      <label>Rechenart auswählen</label>
+
+      <div class="ops" role="tablist" aria-label="Vier Grundrechenarten">
+
+        <button class="opBtn active" data-op="+" role="tab" aria-selected="true">➕</button>
+
+        <button class="opBtn" data-op="-" role="tab" aria-selected="false">➖</button>
+
+        <button class="opBtn" data-op="×" role="tab" aria-selected="false">✖️</button>
+
+        <button class="opBtn" data-op="÷" role="tab" aria-selected="false">➗</button>
+
+      </div>
+
+ 
+
+      <div class="divider"></div>
+
+ 
+
+      <div class="grid2">
+
+        <div>
+
+          <label for="aIn">Zahl A (0–100)</label>
+
+          <input id="aIn" type="number" min="0" max="100" step="1" value="15" />
+
+        </div>
+
+        <div>
+
+          <label for="bIn">Zahl B (0–100)</label>
+
+          <input id="bIn" type="number" min="0" max="100" step="1" value="7" />
+
+        </div>
+
+      </div>
+
+ 
+
+      <div class="actions">
+
+        <button class="secondary" id="randomBtn" type="button">🎲 Zufall</button>
+
+        <button class="primary" id="buildBtn" type="button">🖼️ Bild</button>
+
+        <button class="ghost" id="resetBtn" type="button">🔄 Reset</button>
+
+      </div>
+
+ 
+
+      <div class="checkArea" aria-label="Ergebnis eingeben und prüfen">
+
+        <b>2) Dein Ergebnis</b>
+
+        <div class="tinyNote">
+
+          Rechne <span class="kbd" id="taskKbd">15 + 7</span>.<br/>
+
+          Dann gib dein Ergebnis ein (die Seite verrät es nicht, sie prüft nur richtig/falsch).
+
+        </div>
+
+ 
+
+        <div class="resultRow">
+
+          <div>
+
+            <label for="answerIn">Dein Ergebnis</label>
+
+            <input id="answerIn" type="number" step="1" placeholder="..." />
+
+          </div>
+
+          <div style="flex:0 0 auto; min-width: 180px;">
+
+            <label style="opacity:0;">&nbsp;</label>
+
+            <button class="primary" id="checkBtn" type="button">✅ Prüfen</button>
+
+          </div>
+
+        </div>
+
+ 
+
+        <div id="feedback" class="feedback" aria-live="polite"></div>
+
+        <div class="tinyNote">Wenn es noch nicht stimmt: 💡 drücken und Schritt für Schritt probieren 🙂</div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+ 
+
+  <!-- RIGHT -->
+
+  <section class="card" aria-label="Rechenbild und Hilfe-Schritte">
+
+    <div class="cardHeader">
+
+      <div>
+
+        <h2>Rechenbild</h2>
+
+        <p>Subtraktion: Hand nimmt sichtbar einen Teil aus der Gesamtmenge (alles bleibt sichtbar). Division: bereits verteilt.</p>
+
+      </div>
+
+      <div class="pillNote">
+
+        <span aria-hidden="true">🎨</span>
+
+        <span><b>Wechsel:</b> Symbole</span>
+
+      </div>
+
+    </div>
+
+ 
+
+    <div class="cardBody">
+
+      <div class="sceneWrap" aria-label="Rechenbild">
+
+        <div class="sceneTop">
+
+          <span class="badge" id="sceneBadge">—</span>
+
+          <div class="eq" aria-label="Aufgabe als Gleichung">
+
+            <span class="num" id="eqA">15</span>
+
+            <span class="op" id="eqOp">➕</span>
+
+            <span class="num" id="eqB">7</span>
+
+          </div>
+
+        </div>
+
+        <div id="sceneSvg"></div>
+
+      </div>
+
+ 
+
+      <div class="stepsHeader">
+
+        <div>
+
+          <b>Hilfe-Schritte</b>
+
+          <div class="tinyNote">Erst 💡 drücken – dann erscheint Schritt 1. Jeder Klick zeigt einen weiteren Schritt.</div>
+
+        </div>
+
+        <button class="bulbBtn" id="bulbBtn" type="button">
+
+          <span class="bulb" aria-hidden="true">💡</span>
+
+          Hilfe
+
+        </button>
+
+      </div>
+
+ 
+
+      <div class="steps" id="stepsBox" aria-label="Schritt-für-Schritt-Hilfe"></div>
+
+    </div>
+
+  </section>
+
+</main>
+
+ 
+
+<footer>
+
+  <div class="divider"></div>
+
+  <div><b>Hinweis:</b> Die Lösung wird nie angezeigt. Es wird nur geprüft, ob dein eingegebenes Ergebnis stimmt.</div>
+
+</footer>
+
+ 
+
+<script>
+
+  const $ = (sel) => document.querySelector(sel);
+
+  const clamp = (n, min, max) => Math.max(min, Math.min(max, n));
+
+  const randInt = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
+
+  const choice = (arr) => arr[randInt(0, arr.length - 1)];
+
+ 
+
+  const RANGE_MAX = 100;
+
+ 
+
+  let op = "+";
+
+  let current = { a: 15, b: 7, op:"+", steps:[], stepIndex:0, theme:null };
+
+ 
+
+  const opBtns = Array.from(document.querySelectorAll(".opBtn"));
+
+  const aIn = $("#aIn");
+
+  const bIn = $("#bIn");
+
+  const buildBtn = $("#buildBtn");
+
+  const randomBtn = $("#randomBtn");
+
+  const resetBtn = $("#resetBtn");
+
+ 
+
+  const taskKbd = $("#taskKbd");
+
+  const answerIn = $("#answerIn");
+
+  const checkBtn = $("#checkBtn");
+
+  const feedback = $("#feedback");
+
+ 
+
+  const sceneBadge = $("#sceneBadge");
+
+  const sceneSvg = $("#sceneSvg");
+
+  const eqA = $("#eqA");
+
+  const eqB = $("#eqB");
+
+  const eqOp = $("#eqOp");
+
+ 
+
+  const bulbBtn = $("#bulbBtn");
+
+  const stepsBox = $("#stepsBox");
+
+ 
+
+  const opToEmoji = { "+":"➕", "-":"➖", "×":"✖️", "÷":"➗" };
+
+ 
+
+  opBtns.forEach(btn => {
+
+    btn.addEventListener("click", () => {
+
+      opBtns.forEach(b => { b.classList.remove("active"); b.setAttribute("aria-selected", "false"); });
+
+      btn.classList.add("active");
+
+      btn.setAttribute("aria-selected", "true");
+
+      op = btn.dataset.op;
+
+      updateTaskLabel();
+
+      updateEquation();
+
+    });
+
+  });
+
+ 
+
+  function computeResult(a, b, op){
+
+    if(op === "+") return a + b;
+
+    if(op === "-") return a - b;
+
+    if(op === "×") return a * b;
+
+    if(op === "÷") return b === 0 ? NaN : a / b;
+
+    return NaN;
+
+  }
+
+ 
+
+  function normalizeTask(a, b, op){
+
+    a = clamp(a, 0, RANGE_MAX);
+
+    b = clamp(b, 0, RANGE_MAX);
+
+    if(op === "-" && b > a) [a,b] = [b,a];
+
+    if(op === "×"){ a = clamp(a, 0, 12); b = clamp(b, 0, 12); }
+
+    if(op === "÷"){
+
+      b = clamp(b, 1, 12);
+
+      if(a === 0) a = b;
+
+      a = a - (a % b);
+
+      if(a === 0) a = b;
+
+      if(a > 100) a = Math.floor(100 / b) * b;
+
+      if(a === 0) a = b;
+
+    }
+
+    return {a,b};
+
+  }
+
+ 
+
+  const THEMES = [
+
+    { name:"Äpfel", item:"apple", itemEmoji:"🍎", container:"bag", containerEmoji:"🛍️", palette:"warm" },
+
+    { name:"Bonbons", item:"candy", itemEmoji:"🍬", container:"bag", containerEmoji:"🛍️", palette:"pink" },
+
+    { name:"Sterne", item:"star", itemEmoji:"⭐", container:"box", containerEmoji:"📦", palette:"sky" },
+
+    { name:"Buntstifte", item:"pencil", itemEmoji:"✏️", container:"box", containerEmoji:"📦", palette:"sun" },
+
+    { name:"Bälle", item:"ball", itemEmoji:"⚽", container:"bag", containerEmoji:"🛍️", palette:"mint" },
+
+    { name:"Fische", item:"fish", itemEmoji:"🐟", container:"basket", containerEmoji:"🧺", palette:"ocean" },
+
+    { name:"Becher", item:"cup", itemEmoji:"🧃", container:"tray", containerEmoji:"🍽️", palette:"warm" }
+
+  ];
+
+ 
+
+  function pickTheme(){
+
+    let t = choice(THEMES);
+
+    if(current.theme && t.name === current.theme.name){
+
+      t = choice(THEMES.filter(x => x.name !== current.theme.name));
+
+    }
+
+    return t;
+
+  }
+
+ 
+
+  function buildSteps(a, b, op){
+
+    const steps = [];
+
+    const add = (title, mini="") => steps.push({title, mini});
+
+ 
+
+    if(op === "+"){
+
+      add("Schau auf das Bild: Es gibt zwei Gruppen.", "Zähle erst die eine Gruppe, dann die andere.");
+
+      add("Wenn es viele sind: Zähle in bequemen Sprüngen.", "Zum Beispiel in 2er-, 5er- oder 10er-Schritten.");
+
+      add("Schreibe dir Zwischenergebnisse auf (wenn du willst).", "Dann verlierst du dich beim Zählen nicht.");
+
+      add("Kontrolle: Passt es ungefähr?", "Wenn beide Gruppen groß sind, muss auch das Ergebnis groß sein.");
+
+    }
+
+    if(op === "-"){
+
+      add("Schau auf das Bild: Eine Hand nimmt etwas aus der Gruppe.", "Das zeigt „wegnehmen“.");
+
+      add("Zähle von der großen Gruppe zurück.", "Nutze passende Rückwärts-Schritte.");
+
+      add("Oder: Zähle hoch von der weggenommenen Menge zur großen.", "So findest du den Abstand.");
+
+      add("Kontrolle: Ergebnis ist kleiner als die Startgruppe.", "");
+
+    }
+
+    if(op === "×"){
+
+      add("Schau auf das Bild: Es gibt mehrere gleiche Gruppen.", "In jeder Gruppe sind gleich viele.");
+
+      add("Zähle gruppenweise.", "Immer wieder die gleiche Anzahl dazu.");
+
+      add("Wenn es hilft: Teile die Gruppen auf.", "Erst einige Gruppen zählen, dann die restlichen.");
+
+      add("Kontrolle: Mehr Gruppen oder mehr pro Gruppe = größeres Ergebnis.", "");
+
+    }
+
+    if(op === "÷"){
+
+      add("Schau auf das Bild: Es ist schon fair verteilt.", "Jede Gruppe sieht gleich aus.");
+
+      add("Zähle in einer Gruppe nach.", "Das ist das Ergebnis.");
+
+      add("Kontrolle: Rechne zurück.", "Ergebnis mal Anzahl der Gruppen ergibt wieder die Startmenge.");
+
+    }
+
+    return steps;
+
+  }
+
+ 
+
+  function svgScene(a, b, op, theme){
+
+    const W = 760, H = 340;
+
+    const palettes = {
+
+      warm: { c1:"#f2d6b3", c2:"#ddb78f", c3:"#c99c70", hi:"rgba(255,107,107,.70)" },
+
+      pink: { c1:"#f7c6dd", c2:"#f2a7cc", c3:"#de86b4", hi:"rgba(255,107,107,.70)" },
+
+      sky:  { c1:"#cfe9ff", c2:"#a9d7ff", c3:"#7cc3ff", hi:"rgba(77,171,247,.75)" },
+
+      sun:  { c1:"#ffe8a3", c2:"#ffd966", c3:"#ffc44d", hi:"rgba(255,212,59,.90)" },
+
+      mint: { c1:"#c8f7df", c2:"#9feec8", c3:"#6fe2a7", hi:"rgba(81,207,102,.75)" },
+
+      ocean:{ c1:"#cfefff", c2:"#9fdcff", c3:"#6fc8ff", hi:"rgba(77,171,247,.75)" }
+
+    };
+
+    const pal = palettes[theme.palette] || palettes.warm;
+
+ 
+
+    const itemId = theme.item;
+
+    const contId = theme.container;
+
+ 
+
+    function drawItemsGrid(x, y, n, size, cols, gap){
+
+      let s = `<g>`;
+
+      for(let i=0;i<n;i++){
+
+        const cx = x + (i % cols) * gap;
+
+        const cy = y + Math.floor(i / cols) * gap;
+
+        s += `<use href="#${itemId}" x="${cx}" y="${cy}" width="${size}" height="${size}"/>`;
+
+      }
+
+      s += `</g>`;
+
+      return s;
+
+    }
+
+ 
+
+    function drawContainersGrid(x, y, count, perRow, w, h, gapX, gapY){
+
+      let s = `<g>`;
+
+      for(let i=0;i<count;i++){
+
+        const cx = x + (i % perRow) * (w + gapX);
+
+        const cy = y + Math.floor(i / perRow) * (h + gapY);
+
+        s += `<use href="#${contId}" x="${cx}" y="${cy}" width="${w}" height="${h}"/>`;
+
+      }
+
+      s += `</g>`;
+
+      return s;
+
+    }
+
+ 
+
+    const defs = `
+
+      <defs>
+
+        <filter id="shadow" x="-50%" y="-50%" width="200%" height="200%">
+
+          <feDropShadow dx="0" dy="8" stdDeviation="8" flood-color="rgba(34,49,74,.25)"/>
+
+        </filter>
+
+ 
+
+        <linearGradient id="contGrad" x1="0" x2="0" y1="0" y2="1">
+
+          <stop offset="0" stop-color="${pal.c1}"/>
+
+          <stop offset="0.6" stop-color="${pal.c2}"/>
+
+          <stop offset="1" stop-color="${pal.c3}"/>
+
+        </linearGradient>
+
+        <radialGradient id="shine" cx="30%" cy="25%" r="70%">
+
+          <stop offset="0" stop-color="rgba(255,255,255,.70)"/>
+
+          <stop offset="1" stop-color="rgba(255,255,255,0)"/>
+
+        </radialGradient>
+
+ 
+
+        <!-- Containers -->
+
+        <symbol id="bag" viewBox="0 0 120 140">
+
+          <path d="M34 38 C34 18, 52 10, 60 10 C68 10, 86 18, 86 38"
+
+                fill="none" stroke="rgba(90,60,40,.75)" stroke-width="6" stroke-linecap="round"/>
+
+          <path d="M40 38 C40 22, 54 16, 60 16 C66 16, 80 22, 80 38"
+
+                fill="none" stroke="rgba(255,255,255,.35)" stroke-width="3" stroke-linecap="round"/>
+
+          <path d="M22 46 L98 46 L90 130 Q60 138 30 130 Z" fill="url(#contGrad)" filter="url(#shadow)"/>
+
+          <path d="M22 46 L98 46" stroke="rgba(90,60,40,.28)" stroke-width="2"/>
+
+          <path d="M22 46 L98 46 L96 60 Q60 66 24 60 Z" fill="rgba(255,255,255,.16)"/>
+
+          <ellipse cx="46" cy="68" rx="36" ry="26" fill="url(#shine)" opacity="0.55"/>
+
+        </symbol>
+
+ 
+
+        <symbol id="box" viewBox="0 0 140 120">
+
+          <path d="M20 42 L70 18 L120 42 L70 66 Z" fill="rgba(255,255,255,.22)"/>
+
+          <path d="M20 42 L70 66 L70 110 L20 86 Z" fill="url(#contGrad)" filter="url(#shadow)"/>
+
+          <path d="M120 42 L70 66 L70 110 L120 86 Z" fill="rgba(0,0,0,.08)"/>
+
+          <path d="M20 42 L70 66 L120 42" fill="none" stroke="rgba(34,49,74,.18)" stroke-width="2"/>
+
+          <ellipse cx="60" cy="54" rx="42" ry="28" fill="url(#shine)" opacity="0.45"/>
+
+        </symbol>
+
+ 
+
+        <symbol id="basket" viewBox="0 0 140 120">
+
+          <path d="M45 28 C55 10, 85 10, 95 28" fill="none" stroke="rgba(34,49,74,.25)" stroke-width="6" stroke-linecap="round"/>
+
+          <path d="M26 44 L114 44 L104 104 Q70 116 36 104 Z" fill="url(#contGrad)" filter="url(#shadow)"/>
+
+          <path d="M32 50 L108 50" stroke="rgba(34,49,74,.18)" stroke-width="2"/>
+
+          <path d="M34 54 L42 104 M50 54 L56 108 M66 54 L70 110 M82 54 L84 108 M98 54 L96 104"
+
+                stroke="rgba(255,255,255,.25)" stroke-width="3" stroke-linecap="round"/>
+
+          <ellipse cx="60" cy="64" rx="42" ry="30" fill="url(#shine)" opacity="0.40"/>
+
+        </symbol>
+
+ 
+
+        <symbol id="tray" viewBox="0 0 520 110">
+
+          <path d="M40 44 H480" stroke="rgba(34,49,74,.25)" stroke-width="10" stroke-linecap="round"/>
+
+          <path d="M36 52 Q260 92 484 52" fill="none" stroke="rgba(34,49,74,.18)" stroke-width="10" stroke-linecap="round"/>
+
+          <path d="M30 58 Q260 108 490 58" fill="none" stroke="rgba(77,171,247,.12)" stroke-width="18" stroke-linecap="round"/>
+
+          <rect x="26" y="28" width="468" height="42" rx="20" fill="rgba(255,255,255,.55)" stroke="rgba(34,49,74,.10)"/>
+
+          <ellipse cx="170" cy="40" rx="90" ry="24" fill="url(#shine)" opacity="0.35"/>
+
+        </symbol>
+
+ 
+
+        <!-- Hand -->
+
+        <symbol id="hand" viewBox="0 0 240 140">
+
+          <path d="M54 94 C66 74, 82 66, 98 68 C106 52, 126 46, 140 54 C154 44, 172 50, 178 64
+
+                   C192 62, 206 76, 198 90 C196 114, 166 132, 126 134 C86 136, 60 122, 54 94 Z"
+
+                fill="rgba(255,224,194,.95)" stroke="rgba(34,49,74,.12)" stroke-width="2" filter="url(#shadow)"/>
+
+          <path d="M98 68 C100 84, 98 96, 90 106" fill="none" stroke="rgba(34,49,74,.12)" stroke-width="2" stroke-linecap="round"/>
+
+          <path d="M138 56 C140 76, 138 96, 126 112" fill="none" stroke="rgba(34,49,74,.10)" stroke-width="2" stroke-linecap="round"/>
+
+          <path d="M172 64 C170 82, 162 102, 146 116" fill="none" stroke="rgba(34,49,74,.10)" stroke-width="2" stroke-linecap="round"/>
+
+        </symbol>
+
+ 
+
+        <!-- Items -->
+
+        <symbol id="apple" viewBox="0 0 60 60">
+
+          <defs>
+
+            <radialGradient id="appleGrad" cx="35%" cy="30%" r="75%">
+
+              <stop offset="0" stop-color="#ffb3b3"/>
+
+              <stop offset="0.55" stop-color="#ff3b30"/>
+
+              <stop offset="1" stop-color="#c71b12"/>
+
+            </radialGradient>
+
+            <linearGradient id="leafGrad" x1="0" x2="1">
+
+              <stop offset="0" stop-color="#5ee26b"/>
+
+              <stop offset="1" stop-color="#1f8a3f"/>
+
+            </linearGradient>
+
+          </defs>
+
+          <circle cx="30" cy="33" r="18" fill="url(#appleGrad)" filter="url(#shadow)"/>
+
+          <ellipse cx="24" cy="26" rx="8" ry="10" fill="rgba(255,255,255,.22)"/>
+
+          <path d="M30 16 C28 10, 32 8, 34 6" stroke="#5b3a1f" stroke-width="3" stroke-linecap="round"/>
+
+          <path d="M34 10 C44 10, 46 18, 36 22 C30 24, 28 14, 34 10 Z" fill="url(#leafGrad)"/>
+
+        </symbol>
+
+ 
+
+        <symbol id="candy" viewBox="0 0 70 50">
+
+          <defs>
+
+            <linearGradient id="candyGrad" x1="0" x2="1">
+
+              <stop offset="0" stop-color="#ff8fc1"/>
+
+              <stop offset="1" stop-color="#ff4d9d"/>
+
+            </linearGradient>
+
+          </defs>
+
+          <path d="M12 25 L2 14 L6 10 L18 20 Z" fill="rgba(255,255,255,.28)"/>
+
+          <path d="M58 25 L68 14 L64 10 L52 20 Z" fill="rgba(255,255,255,.28)"/>
+
+          <rect x="16" y="12" width="38" height="26" rx="12" fill="url(#candyGrad)" filter="url(#shadow)"/>
+
+          <ellipse cx="30" cy="18" rx="12" ry="8" fill="rgba(255,255,255,.25)"/>
+
+        </symbol>
+
+ 
+
+        <symbol id="star" viewBox="0 0 60 60">
+
+          <defs>
+
+            <radialGradient id="starGrad" cx="30%" cy="30%" r="80%">
+
+              <stop offset="0" stop-color="#fff7b2"/>
+
+              <stop offset="1" stop-color="#ffd43b"/>
+
+            </radialGradient>
+
+          </defs>
+
+          <path d="M30 6 L37 22 L54 22 L40 32 L46 50 L30 39 L14 50 L20 32 L6 22 L23 22 Z"
+
+                fill="url(#starGrad)" filter="url(#shadow)"/>
+
+          <path d="M20 20 C26 16, 34 16, 40 20" stroke="rgba(255,255,255,.35)" stroke-width="3" stroke-linecap="round"/>
+
+        </symbol>
+
+ 
+
+        <symbol id="pencil" viewBox="0 0 70 70">
+
+          <defs>
+
+            <linearGradient id="penGrad" x1="0" x2="1">
+
+              <stop offset="0" stop-color="#ffd43b"/>
+
+              <stop offset="1" stop-color="#ff922b"/>
+
+            </linearGradient>
+
+          </defs>
+
+          <path d="M14 50 L50 14 L58 22 L22 58 L12 60 Z" fill="url(#penGrad)" filter="url(#shadow)"/>
+
+          <path d="M50 14 L56 8 L62 14 L58 22 Z" fill="rgba(34,49,74,.25)"/>
+
+          <path d="M20 56 L54 22" stroke="rgba(255,255,255,.35)" stroke-width="4" stroke-linecap="round"/>
+
+        </symbol>
+
+ 
+
+        <symbol id="ball" viewBox="0 0 60 60">
+
+          <circle cx="30" cy="30" r="20" fill="rgba(255,255,255,.95)" stroke="rgba(34,49,74,.25)" stroke-width="2" filter="url(#shadow)"/>
+
+          <path d="M30 14 L38 20 L35 30 L25 30 L22 20 Z" fill="rgba(34,49,74,.20)"/>
+
+          <path d="M22 20 L14 28 L18 40 L25 30 Z" fill="rgba(34,49,74,.14)"/>
+
+          <path d="M38 20 L46 28 L42 40 L35 30 Z" fill="rgba(34,49,74,.14)"/>
+
+        </symbol>
+
+ 
+
+        <symbol id="fish" viewBox="0 0 70 50">
+
+          <defs>
+
+            <linearGradient id="fishGrad" x1="0" x2="1">
+
+              <stop offset="0" stop-color="#6fc8ff"/>
+
+              <stop offset="1" stop-color="#2f9cff"/>
+
+            </linearGradient>
+
+          </defs>
+
+          <path d="M12 25 C18 12, 34 8, 46 14 C56 20, 56 30, 46 36 C34 42, 18 38, 12 25 Z"
+
+                fill="url(#fishGrad)" filter="url(#shadow)"/>
+
+          <path d="M46 14 L66 6 L60 25 L66 44 Z" fill="rgba(34,49,74,.18)"/>
+
+          <circle cx="26" cy="24" r="3" fill="rgba(34,49,74,.75)"/>
+
+          <path d="M18 28 C22 32, 28 32, 32 28" fill="none" stroke="rgba(255,255,255,.35)" stroke-width="3" stroke-linecap="round"/>
+
+        </symbol>
+
+ 
+
+        <symbol id="cup" viewBox="0 0 70 70">
+
+          <defs>
+
+            <linearGradient id="cupGrad" x1="0" x2="1">
+
+              <stop offset="0" stop-color="#ff6b6b"/>
+
+              <stop offset="1" stop-color="#4dabf7"/>
+
+            </linearGradient>
+
+          </defs>
+
+          <path d="M18 18 H44 Q50 18 50 24 V46 Q50 56 40 56 H22 Q18 56 18 52 Z"
+
+                fill="url(#cupGrad)" filter="url(#shadow)"/>
+
+          <path d="M44 24 H52 Q58 24 58 30 V36 Q58 44 50 44 H44 Z"
+
+                fill="rgba(255,255,255,.18)"/>
+
+          <rect x="18" y="16" width="32" height="6" rx="3" fill="rgba(255,255,255,.25)"/>
+
+          <path d="M18 40 H50" stroke="rgba(255,255,255,.22)" stroke-width="4" stroke-linecap="round"/>
+
+        </symbol>
+
+ 
+
+        <!-- operator pills -->
+
+        <symbol id="pillPlus" viewBox="0 0 70 46">
+
+          <rect x="2" y="2" width="66" height="42" rx="16" fill="rgba(255,212,59,.35)" stroke="rgba(34,49,74,.12)"/>
+
+          <text x="35" y="30" text-anchor="middle" font-size="22" font-weight="950" fill="rgba(34,49,74,.70)">+</text>
+
+        </symbol>
+
+        <symbol id="pillMinus" viewBox="0 0 70 46">
+
+          <rect x="2" y="2" width="66" height="42" rx="16" fill="rgba(255,107,107,.18)" stroke="rgba(34,49,74,.12)"/>
+
+          <text x="35" y="30" text-anchor="middle" font-size="22" font-weight="950" fill="rgba(34,49,74,.70)">−</text>
+
+        </symbol>
+
+        <symbol id="pillTimes" viewBox="0 0 70 46">
+
+          <rect x="2" y="2" width="66" height="42" rx="16" fill="rgba(77,171,247,.18)" stroke="rgba(34,49,74,.12)"/>
+
+          <text x="35" y="30" text-anchor="middle" font-size="22" font-weight="950" fill="rgba(34,49,74,.70)">×</text>
+
+        </symbol>
+
+        <symbol id="pillDiv" viewBox="0 0 70 46">
+
+          <rect x="2" y="2" width="66" height="42" rx="16" fill="rgba(81,207,102,.18)" stroke="rgba(34,49,74,.12)"/>
+
+          <text x="35" y="30" text-anchor="middle" font-size="22" font-weight="950" fill="rgba(34,49,74,.70)">÷</text>
+
+        </symbol>
+
+ 
+
+        <!-- highlight ring for taken items -->
+
+        <symbol id="ring" viewBox="0 0 60 60">
+
+          <circle cx="30" cy="30" r="26" fill="rgba(255,107,107,.12)" stroke="rgba(255,107,107,.65)" stroke-width="4"/>
+
+        </symbol>
+
+      </defs>
+
+    `;
+
+ 
+
+    const bg = `
+
+      <rect x="0" y="0" width="${W}" height="${H}" rx="18" fill="rgba(255,255,255,.65)"/>
+
+      <rect x="0" y="${H-96}" width="${W}" height="96" rx="18" fill="rgba(234,247,255,.85)"/>
+
+      <path d="M0 ${H-96} C200 ${H-130}, 560 ${H-54}, ${W} ${H-96}" fill="rgba(77,171,247,.10)"/>
+
+    `;
+
+ 
+
+    let content = "";
+
+ 
+
+    if(op === "+"){
+
+      content += `<use href="#pillPlus" x="22" y="16" width="70" height="46"/>`;
+
+      content += `<g transform="translate(22,60)">
+
+        <rect x="0" y="0" width="330" height="230" rx="18" fill="rgba(255,255,255,.62)" stroke="rgba(34,49,74,.10)"/>
+
+        ${drawItemsGrid(18, 18, a, 30, 10, 30)}
+
+      </g>`;
+
+      content += `<g transform="translate(408,60)">
+
+        <rect x="0" y="0" width="330" height="230" rx="18" fill="rgba(255,255,255,.62)" stroke="rgba(34,49,74,.10)"/>
+
+        ${drawItemsGrid(18, 18, b, 30, 10, 30)}
+
+      </g>`;
+
+      content += `<g opacity="0.95">
+
+        <circle cx="380" cy="170" r="26" fill="rgba(255,107,107,.18)" stroke="rgba(34,49,74,.10)"/>
+
+        <text x="380" y="178" text-anchor="middle" font-size="26" font-weight="950" fill="rgba(34,49,74,.70)">+</text>
+
+      </g>`;
+
+    }
+
+ 
+
+    if(op === "-"){
+
+      // NEW: Hand takes "b" items OUT OF the same full set.
+
+      // We show ALL a items. The taken b items are highlighted with rings and also duplicated near the hand (still visible).
+
+      content += `<use href="#pillMinus" x="22" y="16" width="70" height="46"/>`;
+
+ 
+
+      // Tray
+
+      content += `<g transform="translate(34,186)">
+
+        <use href="#tray" x="0" y="-90" width="520" height="110" opacity="0.95"/>
+
+      </g>`;
+
+ 
+
+      // Place all A items on tray area
+
+      const size = 26, cols = 12, gap = 28;
+
+      const startX = 64, startY = 82;
+
+ 
+
+      // Choose which indices are "taken" (b of them) – deterministic-ish by values
+
+      const idxs = [];
+
+      for(let i=0;i<a;i++) idxs.push(i);
+
+      // pseudo shuffle
+
+      let seed = (a*97 + b*131 + 17) % 997;
+
+      function rnd(){ seed = (seed*37 + 11) % 997; return seed/997; }
+
+      for(let i=idxs.length-1;i>0;i--){
+
+        const j = Math.floor(rnd()*(i+1));
+
+        [idxs[i], idxs[j]] = [idxs[j], idxs[i]];
+
+      }
+
+      const takenSet = new Set(idxs.slice(0, Math.min(b,a)));
+
+ 
+
+      // Draw all items + highlight rings for taken ones
+
+      let trayItems = `<g>`;
+
+      for(let i=0;i<a;i++){
+
+        const cx = startX + (i % cols) * gap;
+
+        const cy = startY + Math.floor(i / cols) * gap;
+
+        trayItems += `<use href="#${itemId}" x="${cx}" y="${cy}" width="${size}" height="${size}"/>`;
+
+        if(takenSet.has(i)){
+
+          trayItems += `<use href="#ring" x="${cx-8}" y="${cy-8}" width="${size+16}" height="${size+16}" opacity="0.95"/>`;
+
+        }
+
+      }
+
+      trayItems += `</g>`;
+
+      content += trayItems;
+
+ 
+
+      // Hand position (overlapping right side)
+
+      content += `<g transform="translate(540,40) rotate(-8 0 0)">
+
+        <use href="#hand" x="0" y="0" width="240" height="140" opacity="0.98"/>
+
+      </g>`;
+
+ 
+
+      // Show the taken items near the hand (still visible) as a little cluster
+
+      const takenCount = Math.min(b, a);
+
+      const clusterX = 540, clusterY = 170;
+
+      content += `<g>
+
+        <rect x="${clusterX}" y="${clusterY-18}" width="200" height="130" rx="18" fill="rgba(255,255,255,.62)" stroke="rgba(34,49,74,.10)"/>
+
+      </g>`;
+
+      // draw taken items in the cluster
+
+      let k = 0;
+
+      for(let i=0;i<a;i++){
+
+        if(!takenSet.has(i)) continue;
+
+        const cx = clusterX + 18 + (k % 6) * 28;
+
+        const cy = clusterY + 6 + Math.floor(k / 6) * 28;
+
+        content += `<use href="#${itemId}" x="${cx}" y="${cy}" width="28" height="28"/>`;
+
+        k++;
+
+        if(k >= takenCount) break;
+
+      }
+
+ 
+
+      // Motion arrow from tray to hand cluster
+
+      content += `
+
+        <path d="M470 152 C520 118, 560 126, 610 154" fill="none" stroke="${pal.hi}" stroke-width="6" stroke-linecap="round"/>
+
+        <path d="M610 154 L594 144 L594 164 Z" fill="${pal.hi}"/>
+
+      `;
+
+    }
+
+ 
+
+    if(op === "×"){
+
+      content += `<use href="#pillTimes" x="22" y="16" width="70" height="46"/>`;
+
+ 
+
+      const perRow = 4;
+
+      const contW = 120, contH = 120;
+
+      const gridX = 22, gridY = 60, gapX = 18, gapY = 18;
+
+ 
+
+      content += `<g transform="translate(${gridX},${gridY})">
+
+        <rect x="0" y="0" width="716" height="250" rx="18" fill="rgba(255,255,255,.62)" stroke="rgba(34,49,74,.10)"/>
+
+        ${drawContainersGrid(14, 14, a, perRow, contW, contH, gapX, gapY)}
+
+      </g>`;
+
+ 
+
+      for(let i=0;i<a;i++){
+
+        const cx = 14 + (i % perRow) * (contW + gapX);
+
+        const cy = 14 + Math.floor(i / perRow) * (contH + gapY);
+
+        const innerCols = 5, innerGap = 16, innerSize = 16;
+
+        const startX2 = gridX + cx + 16;
+
+        const startY2 = gridY + cy + 70;
+
+        for(let j=0;j<b;j++){
+
+          const px = startX2 + (j % innerCols) * innerGap;
+
+          const py = startY2 + Math.floor(j / innerCols) * innerGap;
+
+          content += `<use href="#${itemId}" x="${px}" y="${py}" width="${innerSize}" height="${innerSize}"/>`;
+
+        }
+
+      }
+
+    }
+
+ 
+
+    if(op === "÷"){
+
+      content += `<use href="#pillDiv" x="22" y="16" width="70" height="46"/>`;
+
+ 
+
+      const groups = b;
+
+      const each = Math.floor(a / b);
+
+ 
+
+      const perRow = 4;
+
+      const contW = 150, contH = 150;
+
+      const gridX = 22, gridY = 60, gapX = 18, gapY = 18;
+
+ 
+
+      content += `<g transform="translate(${gridX},${gridY})">
+
+        <rect x="0" y="0" width="716" height="250" rx="18" fill="rgba(255,255,255,.62)" stroke="rgba(34,49,74,.10)"/>
+
+        ${drawContainersGrid(14, 14, groups, perRow, contW, contH, gapX, gapY)}
+
+      </g>`;
+
+ 
+
+      for(let i=0;i<groups;i++){
+
+        const cx = 14 + (i % perRow) * (contW + gapX);
+
+        const cy = 14 + Math.floor(i / perRow) * (contH + gapY);
+
+ 
+
+        const innerCols = 10, innerGap = 12, innerSize = 12;
+
+        const startX2 = gridX + cx + 18;
+
+        const startY2 = gridY + cy + 70;
+
+ 
+
+        for(let j=0;j<each;j++){
+
+          const px = startX2 + (j % innerCols) * innerGap;
+
+          const py = startY2 + Math.floor(j / innerCols) * innerGap;
+
+          content += `<use href="#${itemId}" x="${px}" y="${py}" width="${innerSize}" height="${innerSize}"/>`;
+
+        }
+
+      }
+
+    }
+
+ 
+
+    return `
+
+      <svg viewBox="0 0 ${W} ${H}" width="100%" height="auto" role="img" aria-label="Rechenbild">
+
+        ${defs}
+
+        ${bg}
+
+        ${content}
+
+      </svg>
+
+    `;
+
+  }
+
+ 
+
+  function renderSteps(steps, revealedCount){
+
+    stepsBox.innerHTML = "";
+
+    for(let i=0;i<revealedCount;i++){
+
+      const s = steps[i];
+
+      const div = document.createElement("div");
+
+      div.className = "step";
+
+      div.innerHTML = `
+
+        <div class="stepNum">${i+1}</div>
+
+        <div>
+
+          <p class="stepText">${escapeHTML(s.title)}</p>
+
+          ${s.mini ? `<div class="mini">${escapeHTML(s.mini)}</div>` : ""}
+
+        </div>
+
+      `;
+
+      stepsBox.appendChild(div);
+
+    }
+
+    if(revealedCount > 0) stepsBox.classList.add("show");
+
+ 
+
+    if(revealedCount >= steps.length && steps.length > 0){
+
+      bulbBtn.innerHTML = `<span class="bulb" aria-hidden="true">✅</span> Fertig`;
+
+      bulbBtn.disabled = true;
+
+      bulbBtn.style.opacity = 0.75;
+
+      bulbBtn.style.cursor = "default";
+
+    }else{
+
+      bulbBtn.innerHTML = `<span class="bulb" aria-hidden="true">💡</span> Hilfe`;
+
+      bulbBtn.disabled = false;
+
+      bulbBtn.style.opacity = 1;
+
+      bulbBtn.style.cursor = "pointer";
+
+    }
+
+  }
+
+ 
+
+  function revealNextStep(){
+
+    if(!current.steps || current.steps.length === 0) return;
+
+    current.stepIndex = clamp(current.stepIndex + 1, 0, current.steps.length);
+
+    renderSteps(current.steps, current.stepIndex);
+
+  }
+
+ 
+
+  function updateTaskLabel(){
+
+    const a = clamp(parseInt(aIn.value || "0", 10), 0, RANGE_MAX);
+
+    const b = clamp(parseInt(bIn.value || "0", 10), 0, RANGE_MAX);
+
+    taskKbd.textContent = `${a} ${op} ${b}`;
+
+  }
+
+  function updateEquation(){
+
+    const a = clamp(parseInt(aIn.value || "0", 10), 0, RANGE_MAX);
+
+    const b = clamp(parseInt(bIn.value || "0", 10), 0, RANGE_MAX);
+
+    eqA.textContent = a;
+
+    eqB.textContent = b;
+
+    eqOp.textContent = opToEmoji[op] || "➕";
+
+  }
+
+  function setFeedback(type, text){
+
+    feedback.classList.remove("show","good","bad");
+
+    if(!text){ feedback.textContent = ""; return; }
+
+    feedback.textContent = text;
+
+    feedback.classList.add("show");
+
+    if(type === "good") feedback.classList.add("good");
+
+    if(type === "bad") feedback.classList.add("bad");
+
+  }
+
+  function escapeHTML(str){
+
+    return String(str)
+
+      .replaceAll("&","&amp;")
+
+      .replaceAll("<","&lt;")
+
+      .replaceAll(">","&gt;")
+
+      .replaceAll('"',"&quot;")
+
+      .replaceAll("'","&#039;");
+
+  }
+
+ 
+
+  function buildAll(){
+
+    let a = parseInt(aIn.value || "0", 10);
+
+    let b = parseInt(bIn.value || "0", 10);
+
+    ({a,b} = normalizeTask(a,b,op));
+
+ 
+
+    aIn.value = a;
+
+    bIn.value = b;
+
+ 
+
+    current.theme = pickTheme();
+
+    current.a = a;
+
+    current.b = b;
+
+    current.op = op;
+
+ 
+
+    current.steps = buildSteps(a,b,op);
+
+    current.stepIndex = 0;
+
+ 
+
+    stepsBox.classList.remove("show");
+
+    stepsBox.innerHTML = "";
+
+    bulbBtn.innerHTML = `<span class="bulb" aria-hidden="true">💡</span> Hilfe`;
+
+    bulbBtn.disabled = false;
+
+    bulbBtn.style.opacity = 1;
+
+    bulbBtn.style.cursor = "pointer";
+
+ 
+
+    sceneBadge.textContent = `${opToEmoji[op]}  ${current.theme.itemEmoji}  ${current.theme.containerEmoji}`;
+
+    sceneSvg.innerHTML = svgScene(a,b,op,current.theme);
+
+ 
+
+    taskKbd.textContent = `${a} ${op} ${b}`;
+
+    eqA.textContent = a;
+
+    eqB.textContent = b;
+
+    eqOp.textContent = opToEmoji[op];
+
+ 
+
+    answerIn.value = "";
+
+    setFeedback("", "");
+
+  }
+
+ 
+
+  function newRandomTask(){
+
+    let a = randInt(0, 100);
+
+    let b = randInt(0, 100);
+
+ 
+
+    if(op === "×"){ a = randInt(0, 12); b = randInt(0, 12); }
+
+    if(op === "÷"){
+
+      b = randInt(1, 12);
+
+      const k = randInt(1, Math.max(1, Math.floor(100 / b)));
+
+      a = b * k;
+
+      if(a > 100) a = Math.floor(100 / b) * b;
+
+      if(a === 0) a = b;
+
+    }
+
+    if(op === "-" && b > a){ [a,b] = [b,a]; }
+
+ 
+
+    aIn.value = a;
+
+    bIn.value = b;
+
+    updateTaskLabel();
+
+    updateEquation();
+
+  }
+
+ 
+
+  function resetAll(){
+
+    op = "+";
+
+    opBtns.forEach(b => {
+
+      const is = b.dataset.op === "+";
+
+      b.classList.toggle("active", is);
+
+      b.setAttribute("aria-selected", is ? "true":"false");
+
+    });
+
+ 
+
+    aIn.value = 15;
+
+    bIn.value = 7;
+
+ 
+
+    current.theme = null;
+
+    current.steps = [];
+
+    current.stepIndex = 0;
+
+ 
+
+    sceneBadge.textContent = "—";
+
+    sceneSvg.innerHTML = "";
+
+ 
+
+    stepsBox.classList.remove("show");
+
+    stepsBox.innerHTML = "";
+
+ 
+
+    bulbBtn.innerHTML = `<span class="bulb" aria-hidden="true">💡</span> Hilfe`;
+
+    bulbBtn.disabled = false;
+
+ 
+
+    answerIn.value = "";
+
+    setFeedback("", "");
+
+ 
+
+    updateTaskLabel();
+
+    updateEquation();
+
+  }
+
+ 
+
+  function checkAnswer(){
+
+    const userVal = answerIn.value.trim();
+
+    if(userVal === ""){
+
+      setFeedback("bad", "Bitte trage erst ein Ergebnis ein.");
+
+      return;
+
+    }
+
+    const userNum = Number(userVal);
+
+    if(Number.isNaN(userNum) || !Number.isFinite(userNum)){
+
+      setFeedback("bad", "Das ist keine gültige Zahl.");
+
+      return;
+
+    }
+
+    const correct = computeResult(current.a, current.b, current.op);
+
+    const ok = Math.abs(userNum - correct) < 1e-9;
+
+    setFeedback(ok ? "good" : "bad", ok ? "✅ Richtig!" : "❌ Noch nicht.");
+
+  }
+
+ 
+
+  [aIn, bIn].forEach(inp => inp.addEventListener("input", () => {
+
+    inp.value = clamp(parseInt(inp.value || "0", 10), 0, RANGE_MAX);
+
+    updateTaskLabel();
+
+    updateEquation();
+
+  }));
+
+ 
+
+  buildBtn.addEventListener("click", buildAll);
+
+  randomBtn.addEventListener("click", () => { newRandomTask(); buildAll(); });
+
+  resetBtn.addEventListener("click", resetAll);
+
+ 
+
+  bulbBtn.addEventListener("click", revealNextStep);
+
+  checkBtn.addEventListener("click", checkAnswer);
+
+ 
+
+  document.addEventListener("keydown", (e) => {
+
+    if(e.key === "Enter"){
+
+      const activeId = document.activeElement?.id || "";
+
+      if(activeId === "answerIn") checkAnswer();
+
+      else buildAll();
+
+    }
+
+  });
+
+ 
+
+  resetAll();
+
+</script>
+
+</body>
+
+</html>
