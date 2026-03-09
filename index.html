@@ -6,7 +6,7 @@
 
   <meta charset="UTF-8" />
 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
 
   <title>Zahlen bis 100 – Rechenbilder & Rechenwege (1./2. Klasse)</title>
 
@@ -14,25 +14,15 @@
 
     :root{
 
-      --bg1:#fff7e6;
+      --bg1:#fff7e6; --bg2:#eaf7ff;
 
-      --bg2:#eaf7ff;
-
-      --ink:#22314a;
-
-      --muted:#5a6a86;
+      --ink:#22314a; --muted:#5a6a86;
 
       --shadow: 0 10px 24px rgba(34,49,74,.12);
 
       --radius: 18px;
 
-      --accent:#ff6b6b;
-
-      --accent2:#4dabf7;
-
-      --accent3:#51cf66;
-
-      --accent4:#ffd43b;
+      --accent:#ff6b6b; --accent2:#4dabf7; --accent4:#ffd43b;
 
       --font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
 
@@ -42,11 +32,7 @@
 
     body{
 
-      margin:0;
-
-      font-family:var(--font);
-
-      color:var(--ink);
+      margin:0; font-family:var(--font); color:var(--ink); min-height:100vh;
 
       background:
 
@@ -58,27 +44,19 @@
 
         linear-gradient(135deg, var(--bg1), var(--bg2));
 
-      min-height:100vh;
-
     }
+
+ 
 
     header{
 
       padding: 22px 18px 10px;
 
-      max-width: 1100px;
+      max-width: 1280px;
 
       margin: 0 auto;
 
-      display:flex;
-
-      gap:14px;
-
-      align-items:center;
-
-      justify-content:space-between;
-
-      flex-wrap:wrap;
+      display:flex; gap:14px; align-items:center; justify-content:space-between; flex-wrap:wrap;
 
     }
 
@@ -86,15 +64,13 @@
 
     .logo{
 
-      width:52px;height:52px;border-radius:16px;
+      width:52px;height:52px;border-radius:16px; box-shadow: var(--shadow);
 
       background:
 
         radial-gradient(circle at 30% 30%, #fff, rgba(255,255,255,.2) 38%, transparent 40%),
 
         linear-gradient(135deg, var(--accent), var(--accent2));
-
-      box-shadow: var(--shadow);
 
       position:relative; overflow:hidden;
 
@@ -114,7 +90,7 @@
 
     }
 
-    h1{margin:0;font-size:clamp(18px, 2.8vw, 28px);line-height:1.15;letter-spacing:.2px;}
+    h1{margin:0;font-size:clamp(18px, 2.8vw, 28px);line-height:1.15;}
 
     .subtitle{margin:4px 0 0;color:var(--muted);font-size:14px;}
 
@@ -122,7 +98,7 @@
 
     main{
 
-      max-width: 1100px;
+      max-width: 1280px;
 
       margin: 0 auto;
 
@@ -134,11 +110,15 @@
 
       gap: 14px;
 
+      align-items: start;
+
     }
 
-    @media (max-width: 980px){ main{ grid-template-columns:1fr; } }
+    @media (max-width: 1040px){ main{ grid-template-columns:1fr; } }
 
  
+
+    /* IMPORTANT: allow growth, no clipping */
 
     .card{
 
@@ -150,7 +130,7 @@
 
       box-shadow: var(--shadow);
 
-      overflow:hidden;
+      overflow: visible;
 
     }
 
@@ -158,19 +138,15 @@
 
       padding: 14px 16px 10px;
 
-      display:flex;
-
-      align-items:flex-start;
-
-      justify-content:space-between;
-
-      gap:10px;
+      display:flex; align-items:flex-start; justify-content:space-between; gap:10px; flex-wrap:wrap;
 
       border-bottom: 1px dashed rgba(34,49,74,.14);
 
-      background:
+      background: linear-gradient(135deg, rgba(255,107,107,.08), rgba(77,171,247,.08));
 
-        linear-gradient(135deg, rgba(255,107,107,.08), rgba(77,171,247,.08));
+      border-top-left-radius: var(--radius);
+
+      border-top-right-radius: var(--radius);
 
     }
 
@@ -178,27 +154,49 @@
 
     .cardHeader p{margin:5px 0 0;color:var(--muted);font-size:13px;line-height:1.35;}
 
-    .cardBody{ padding: 14px 16px 16px; }
+    .cardBody{
+
+      padding: 14px 16px 16px;
+
+      border-bottom-left-radius: var(--radius);
+
+      border-bottom-right-radius: var(--radius);
+
+    }
 
  
 
-    .pillNote{
+    .tabs{display:flex; gap:8px; flex-wrap:wrap; margin-bottom: 12px;}
 
-      display:inline-flex; gap:8px; align-items:center;
+    .tabBtn{
 
-      padding:8px 10px;border-radius:999px;
+      flex:1 1 220px;
 
-      border:1px solid rgba(34,49,74,.12);
+      padding: 10px 10px;
+
+      border-radius: 14px;
+
+      border: 1px solid rgba(34,49,74,.12);
 
       background: rgba(255,255,255,.75);
 
-      box-shadow: 0 8px 18px rgba(34,49,74,.06);
+      cursor:pointer; font-weight:950;
 
-      font-size:13px;
+      transition:.15s ease;
+
+      display:flex; align-items:center; justify-content:center; gap:8px;
 
       user-select:none;
 
-      white-space:nowrap;
+    }
+
+    .tabBtn.active{
+
+      border-color: rgba(34,49,74,.35);
+
+      background: rgba(255,255,255,.96);
+
+      transform: translateY(-1px);
 
     }
 
@@ -210,7 +208,7 @@
 
     label{font-size: 13px;color: var(--muted);display:block;margin: 0 0 6px;}
 
-    input[type="number"]{
+    input[type="number"], input[type="text"]{
 
       width: 100%;
 
@@ -230,7 +228,7 @@
 
     }
 
-    input[type="number"]:focus{
+    input[type="number"]:focus, input[type="text"]:focus{
 
       border-color: rgba(77,171,247,.8);
 
@@ -256,17 +254,15 @@
 
       cursor:pointer;
 
-      font-weight:900;
+      font-weight:950;
 
-      display:flex; align-items:center; justify-content:center; gap:8px;
+      display:flex; align-items:center; justify-content:center;
 
       transition:.15s ease;
 
       user-select:none;
 
     }
-
-    .opBtn:hover{ transform: translateY(-1px); }
 
     .opBtn.active{
 
@@ -290,7 +286,7 @@
 
       border-radius: 14px;
 
-      font-weight:900;
+      font-weight:950;
 
       font-size: 14px;
 
@@ -300,13 +296,13 @@
 
       user-select:none;
 
-    }
+      justify-content:center;
 
-    button:active{ transform: translateY(1px); }
+    }
 
     .primary{
 
-      background: linear-gradient(135deg, var(--accent2), #7cc3ff);
+      background: linear-gradient(135deg, #4dabf7, #7cc3ff);
 
       color:#07335a;
 
@@ -316,7 +312,7 @@
 
     .secondary{
 
-      background: linear-gradient(135deg, var(--accent4), #ffe891);
+      background: linear-gradient(135deg, #ffd43b, #ffe891);
 
       color:#4a3a00;
 
@@ -362,7 +358,9 @@
 
     }
 
-    .resultRow > *{ flex: 1 1 200px; }
+    .resultRow > *{ flex: 1 1 220px; }
+
+ 
 
     .feedback{
 
@@ -378,6 +376,8 @@
 
       display:none;
 
+      white-space:pre-wrap;
+
     }
 
     .feedback.show{ display:block; }
@@ -386,9 +386,11 @@
 
     .bad{ border-color: rgba(255,107,107,.45) !important; background: rgba(255,107,107,.10) !important; }
 
-    .tinyNote{font-size: 12px;color: var(--muted);margin-top: 8px;line-height: 1.35;}
+    .warn{ border-color: rgba(255,146,43,.55) !important; background: rgba(255,146,43,.12) !important; }
 
  
+
+    .tinyNote{font-size: 12px;color: var(--muted);margin-top: 8px;line-height: 1.35;}
 
     .kbd{
 
@@ -412,6 +414,8 @@
 
  
 
+    /* IMPORTANT: image window grows, no clipping */
+
     .sceneWrap{
 
       margin-top: 12px;
@@ -424,23 +428,23 @@
 
       background: rgba(255,255,255,.78);
 
-      overflow:hidden;
+      overflow: visible;
 
     }
 
     .sceneTop{
 
-      display:flex;
-
-      gap:10px;
-
-      align-items:center;
-
-      justify-content:space-between;
-
-      flex-wrap:wrap;
+      display:flex; gap:10px; align-items:center; justify-content:space-between; flex-wrap:wrap;
 
       margin-bottom: 10px;
+
+      background: rgba(255,255,255,.85);
+
+      padding: 8px;
+
+      border-radius: 14px;
+
+      border: 1px solid rgba(34,49,74,.08);
 
     }
 
@@ -450,7 +454,7 @@
 
       border-radius: 999px;
 
-      font-weight:900;
+      font-weight:950;
 
       font-size: 13px;
 
@@ -466,19 +470,9 @@
 
     .eq{
 
-      display:flex;
+      display:flex; align-items:center; gap:10px; flex-wrap:wrap; justify-content:flex-end;
 
-      align-items:center;
-
-      gap:10px;
-
-      flex-wrap:wrap;
-
-      justify-content:flex-end;
-
-      color: rgba(34,49,74,.85);
-
-      font-weight:950;
+      color: rgba(34,49,74,.85); font-weight:950;
 
     }
 
@@ -516,15 +510,7 @@
 
       margin-top: 12px;
 
-      display:flex;
-
-      align-items:center;
-
-      justify-content:space-between;
-
-      gap:10px;
-
-      flex-wrap:wrap;
+      display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap;
 
     }
 
@@ -540,11 +526,7 @@
 
       padding: 10px 12px;
 
-      display:inline-flex;
-
-      align-items:center;
-
-      gap:10px;
+      display:inline-flex; align-items:center; gap:10px;
 
       font-weight:950;
 
@@ -566,21 +548,9 @@
 
     }
 
- 
-
-    .steps{
-
-      margin-top: 10px;
-
-      display:none;
-
-      gap:10px;
-
-    }
+    .steps{ margin-top:10px; display:none; gap:10px; }
 
     .steps.show{ display:grid; }
-
- 
 
     .step{
 
@@ -592,11 +562,7 @@
 
       border: 1px solid rgba(34,49,74,.10);
 
-      display:flex;
-
-      gap:10px;
-
-      align-items:flex-start;
+      display:flex; gap:10px; align-items:flex-start;
 
       box-shadow: 0 12px 22px rgba(34,49,74,.08);
 
@@ -624,23 +590,7 @@
 
     .mini{color: var(--muted);font-size: 13px;margin-top:4px;}
 
- 
-
-    footer{
-
-      max-width: 1100px;
-
-      margin: 0 auto;
-
-      padding: 0 18px 24px;
-
-      color: var(--muted);
-
-      font-size: 12px;
-
-      line-height:1.4;
-
-    }
+    .hidden{display:none !important;}
 
   </style>
 
@@ -660,17 +610,9 @@
 
       <h1>Zahlen bis 100 – Rechenbilder & Rechenwege</h1>
 
-      <div class="subtitle">1./2. Klasse • Symbole wechseln • Hilfe-Schritte erst nach 💡 • Lösung bleibt geheim</div>
+      <div class="subtitle">Alle Operatoren funktionieren • Division: Rest rechts</div>
 
     </div>
-
-  </div>
-
-  <div class="pillNote">
-
-    <span aria-hidden="true">🎒</span>
-
-    <span><b>Zahlenraum:</b> 0–100</span>
 
   </div>
 
@@ -682,23 +624,15 @@
 
   <!-- LEFT -->
 
-  <section class="card" aria-label="Aufgabe erstellen und üben">
+  <section class="card" aria-label="Aufgaben">
 
     <div class="cardHeader">
 
       <div>
 
-        <h2>1) Aufgabe erstellen</h2>
+        <h2>Aufgaben</h2>
 
-        <p>Zahlen eingeben, Rechenart wählen, Rechenbild anzeigen. Hilfe-Schritte erscheinen erst, wenn du 💡 antippst.</p>
-
-      </div>
-
-      <div class="pillNote">
-
-        <span aria-hidden="true">💡</span>
-
-        <span><b>💡</b> = Hilfe</span>
+        <p>Modus 1: eigene Zahlen • Modus 2: Üben • Zahlenraum 0–100 (sonst Warnung).</p>
 
       </div>
 
@@ -708,17 +642,27 @@
 
     <div class="cardBody">
 
-      <label>Rechenart auswählen</label>
+      <div class="tabs" role="tablist">
 
-      <div class="ops" role="tablist" aria-label="Vier Grundrechenarten">
+        <button class="tabBtn active" id="mode1Btn" type="button" aria-selected="true">🧩 Modus 1: eigene Zahlen</button>
 
-        <button class="opBtn active" data-op="+" role="tab" aria-selected="true">➕</button>
+        <button class="tabBtn" id="mode2Btn" type="button" aria-selected="false">🎯 Modus 2: Üben</button>
 
-        <button class="opBtn" data-op="-" role="tab" aria-selected="false">➖</button>
+      </div>
 
-        <button class="opBtn" data-op="×" role="tab" aria-selected="false">✖️</button>
+ 
 
-        <button class="opBtn" data-op="÷" role="tab" aria-selected="false">➗</button>
+      <label>Rechenart</label>
+
+      <div class="ops" role="tablist" aria-label="Operatoren">
+
+        <button class="opBtn active" data-op="+">➕</button>
+
+        <button class="opBtn" data-op="-">➖</button>
+
+        <button class="opBtn" data-op="×">✖️</button>
+
+        <button class="opBtn" data-op="÷">➗</button>
 
       </div>
 
@@ -728,59 +672,89 @@
 
  
 
-      <div class="grid2">
+      <div id="mode1Panel">
 
-        <div>
-
-          <label for="aIn">Zahl A (0–100)</label>
-
-          <input id="aIn" type="number" min="0" max="100" step="1" value="15" />
-
-        </div>
-
-        <div>
-
-          <label for="bIn">Zahl B (0–100)</label>
-
-          <input id="bIn" type="number" min="0" max="100" step="1" value="7" />
-
-        </div>
-
-      </div>
-
- 
-
-      <div class="actions">
-
-        <button class="secondary" id="randomBtn" type="button">🎲 Zufall</button>
-
-        <button class="primary" id="buildBtn" type="button">🖼️ Bild</button>
-
-        <button class="ghost" id="resetBtn" type="button">🔄 Reset</button>
-
-      </div>
-
- 
-
-      <div class="checkArea" aria-label="Ergebnis eingeben und prüfen">
-
-        <b>2) Dein Ergebnis</b>
-
-        <div class="tinyNote">
-
-          Rechne <span class="kbd" id="taskKbd">15 + 7</span>.<br/>
-
-          Dann gib dein Ergebnis ein (die Seite verrät es nicht, sie prüft nur richtig/falsch).
-
-        </div>
-
- 
-
-        <div class="resultRow">
+        <div class="grid2">
 
           <div>
 
-            <label for="answerIn">Dein Ergebnis</label>
+            <label for="aIn">Zahl A (0–100)</label>
+
+            <input id="aIn" type="number" min="0" max="100" step="1" value="15" />
+
+          </div>
+
+          <div>
+
+            <label for="bIn">Zahl B (0–100)</label>
+
+            <input id="bIn" type="number" min="0" max="100" step="1" value="7" />
+
+          </div>
+
+        </div>
+
+ 
+
+        <div class="actions">
+
+          <button class="primary" id="buildBtn" type="button">🖼️ Bild</button>
+
+          <button class="ghost" id="resetBtn" type="button">🔄 Reset</button>
+
+        </div>
+
+      </div>
+
+ 
+
+      <div id="mode2Panel" class="hidden">
+
+        <div class="grid2">
+
+          <div>
+
+            <label>Aufgabe</label>
+
+            <input id="presetTask" type="text" readonly value="—" />
+
+          </div>
+
+          <div>
+
+            <label>Neu</label>
+
+            <button class="secondary" id="newPracticeBtn" type="button" style="width:100%;">🎲 Neue Übungsaufgabe</button>
+
+          </div>
+
+        </div>
+
+        <div class="actions">
+
+          <button class="primary" id="buildPracticeBtn" type="button">🖼️ Bild</button>
+
+        </div>
+
+      </div>
+
+ 
+
+      <div class="checkArea" aria-label="Ergebnis prüfen">
+
+        <b>Dein Ergebnis</b>
+
+        <div class="tinyNote">Aufgabe: <span class="kbd" id="taskKbd">15 + 7</span></div>
+
+ 
+
+        <!-- normal -->
+
+        <div class="resultRow" id="answerRowDefault">
+
+          <div>
+
+            <label for="answerIn">Ergebnis</label>
 
             <input id="answerIn" type="number" step="1" placeholder="..." />
 
@@ -798,9 +772,39 @@
 
  
 
-        <div id="feedback" class="feedback" aria-live="polite"></div>
+        <!-- division -->
 
-        <div class="tinyNote">Wenn es noch nicht stimmt: 💡 drücken und Schritt für Schritt probieren 🙂</div>
+        <div class="resultRow hidden" id="answerRowDiv">
+
+          <div>
+
+            <label for="quotIn">Ergebnis</label>
+
+            <input id="quotIn" type="number" step="1" min="0" placeholder="..." />
+
+          </div>
+
+          <div>
+
+            <label for="restIn">Rest</label>
+
+            <input id="restIn" type="number" step="1" min="0" placeholder="..." />
+
+          </div>
+
+          <div style="flex:0 0 auto; min-width: 180px;">
+
+            <label style="opacity:0;">&nbsp;</label>
+
+            <button class="primary" id="checkDivBtn" type="button">✅ Prüfen</button>
+
+          </div>
+
+        </div>
+
+ 
+
+        <div id="feedback" class="feedback" aria-live="polite"></div>
 
       </div>
 
@@ -812,7 +816,7 @@
 
   <!-- RIGHT -->
 
-  <section class="card" aria-label="Rechenbild und Hilfe-Schritte">
+  <section class="card" aria-label="Rechenbild">
 
     <div class="cardHeader">
 
@@ -820,15 +824,7 @@
 
         <h2>Rechenbild</h2>
 
-        <p>Subtraktion: Hand nimmt sichtbar einen Teil aus der Gesamtmenge (alles bleibt sichtbar). Division: bereits verteilt.</p>
-
-      </div>
-
-      <div class="pillNote">
-
-        <span aria-hidden="true">🎨</span>
-
-        <span><b>Wechsel:</b> Symbole</span>
+        <p>Fenster wächst nach unten. Division: 2 Behälter nebeneinander, Rest rechts.</p>
 
       </div>
 
@@ -838,13 +834,13 @@
 
     <div class="cardBody">
 
-      <div class="sceneWrap" aria-label="Rechenbild">
+      <div class="sceneWrap">
 
         <div class="sceneTop">
 
           <span class="badge" id="sceneBadge">—</span>
 
-          <div class="eq" aria-label="Aufgabe als Gleichung">
+          <div class="eq">
 
             <span class="num" id="eqA">15</span>
 
@@ -868,15 +864,13 @@
 
           <b>Hilfe-Schritte</b>
 
-          <div class="tinyNote">Erst 💡 drücken – dann erscheint Schritt 1. Jeder Klick zeigt einen weiteren Schritt.</div>
+          <div class="tinyNote">💡 drücken → Schritt 1. Jeder Klick zeigt den nächsten Schritt.</div>
 
         </div>
 
         <button class="bulbBtn" id="bulbBtn" type="button">
 
-          <span class="bulb" aria-hidden="true">💡</span>
-
-          Hilfe
+          <span class="bulb" aria-hidden="true">💡</span> Hilfe
 
         </button>
 
@@ -884,23 +878,13 @@
 
  
 
-      <div class="steps" id="stepsBox" aria-label="Schritt-für-Schritt-Hilfe"></div>
+      <div class="steps" id="stepsBox"></div>
 
     </div>
 
   </section>
 
 </main>
-
- 
-
-<footer>
-
-  <div class="divider"></div>
-
-  <div><b>Hinweis:</b> Die Lösung wird nie angezeigt. Es wird nur geprüft, ob dein eingegebenes Ergebnis stimmt.</div>
-
-</footer>
 
  
 
@@ -914,15 +898,35 @@
 
   const choice = (arr) => arr[randInt(0, arr.length - 1)];
 
+  const escapeHTML = (str) => String(str)
+
+    .replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll(">","&gt;")
+
+    .replaceAll('"',"&quot;").replaceAll("'","&#039;");
+
  
 
-  const RANGE_MAX = 100;
+  const opToEmoji = { "+":"➕", "-":"➖", "×":"✖️", "÷":"➗" };
 
  
+
+  let mode = 1;
 
   let op = "+";
 
-  let current = { a: 15, b: 7, op:"+", steps:[], stepIndex:0, theme:null };
+  let current = { a: 15, b: 7, op:"+", steps:[], stepIndex:0, theme:null, valid:true };
+
+ 
+
+  // UI refs
+
+  const mode1Btn = $("#mode1Btn");
+
+  const mode2Btn = $("#mode2Btn");
+
+  const mode1Panel = $("#mode1Panel");
+
+  const mode2Panel = $("#mode2Panel");
 
  
 
@@ -934,17 +938,33 @@
 
   const buildBtn = $("#buildBtn");
 
-  const randomBtn = $("#randomBtn");
-
   const resetBtn = $("#resetBtn");
+
+ 
+
+  const presetTask = $("#presetTask");
+
+  const newPracticeBtn = $("#newPracticeBtn");
+
+  const buildPracticeBtn = $("#buildPracticeBtn");
 
  
 
   const taskKbd = $("#taskKbd");
 
+  const answerRowDefault = $("#answerRowDefault");
+
+  const answerRowDiv = $("#answerRowDiv");
+
   const answerIn = $("#answerIn");
 
+  const quotIn = $("#quotIn");
+
+  const restIn = $("#restIn");
+
   const checkBtn = $("#checkBtn");
+
+  const checkDivBtn = $("#checkDivBtn");
 
   const feedback = $("#feedback");
 
@@ -968,79 +988,7 @@
 
  
 
-  const opToEmoji = { "+":"➕", "-":"➖", "×":"✖️", "÷":"➗" };
-
- 
-
-  opBtns.forEach(btn => {
-
-    btn.addEventListener("click", () => {
-
-      opBtns.forEach(b => { b.classList.remove("active"); b.setAttribute("aria-selected", "false"); });
-
-      btn.classList.add("active");
-
-      btn.setAttribute("aria-selected", "true");
-
-      op = btn.dataset.op;
-
-      updateTaskLabel();
-
-      updateEquation();
-
-    });
-
-  });
-
- 
-
-  function computeResult(a, b, op){
-
-    if(op === "+") return a + b;
-
-    if(op === "-") return a - b;
-
-    if(op === "×") return a * b;
-
-    if(op === "÷") return b === 0 ? NaN : a / b;
-
-    return NaN;
-
-  }
-
- 
-
-  function normalizeTask(a, b, op){
-
-    a = clamp(a, 0, RANGE_MAX);
-
-    b = clamp(b, 0, RANGE_MAX);
-
-    if(op === "-" && b > a) [a,b] = [b,a];
-
-    if(op === "×"){ a = clamp(a, 0, 12); b = clamp(b, 0, 12); }
-
-    if(op === "÷"){
-
-      b = clamp(b, 1, 12);
-
-      if(a === 0) a = b;
-
-      a = a - (a % b);
-
-      if(a === 0) a = b;
-
-      if(a > 100) a = Math.floor(100 / b) * b;
-
-      if(a === 0) a = b;
-
-    }
-
-    return {a,b};
-
-  }
-
- 
+  // Themes (wechseln bei jeder Aufgabe)
 
   const THEMES = [
 
@@ -1054,13 +1002,11 @@
 
     { name:"Bälle", item:"ball", itemEmoji:"⚽", container:"bag", containerEmoji:"🛍️", palette:"mint" },
 
-    { name:"Fische", item:"fish", itemEmoji:"🐟", container:"basket", containerEmoji:"🧺", palette:"ocean" },
+    { name:"Fische", item:"fish", itemEmoji:"🐟", container:"bucket", containerEmoji:"🪣", palette:"ocean" },
 
     { name:"Becher", item:"cup", itemEmoji:"🧃", container:"tray", containerEmoji:"🍽️", palette:"warm" }
 
   ];
-
- 
 
   function pickTheme(){
 
@@ -1078,811 +1024,151 @@
 
  
 
-  function buildSteps(a, b, op){
+  function setFeedback(type, text){
 
-    const steps = [];
+    feedback.classList.remove("show","good","bad","warn");
 
-    const add = (title, mini="") => steps.push({title, mini});
+    if(!text){ feedback.textContent=""; return; }
 
- 
+    feedback.textContent = text;
 
-    if(op === "+"){
+    feedback.classList.add("show");
 
-      add("Schau auf das Bild: Es gibt zwei Gruppen.", "Zähle erst die eine Gruppe, dann die andere.");
+    if(type==="good") feedback.classList.add("good");
 
-      add("Wenn es viele sind: Zähle in bequemen Sprüngen.", "Zum Beispiel in 2er-, 5er- oder 10er-Schritten.");
+    if(type==="bad") feedback.classList.add("bad");
 
-      add("Schreibe dir Zwischenergebnisse auf (wenn du willst).", "Dann verlierst du dich beim Zählen nicht.");
-
-      add("Kontrolle: Passt es ungefähr?", "Wenn beide Gruppen groß sind, muss auch das Ergebnis groß sein.");
-
-    }
-
-    if(op === "-"){
-
-      add("Schau auf das Bild: Eine Hand nimmt etwas aus der Gruppe.", "Das zeigt „wegnehmen“.");
-
-      add("Zähle von der großen Gruppe zurück.", "Nutze passende Rückwärts-Schritte.");
-
-      add("Oder: Zähle hoch von der weggenommenen Menge zur großen.", "So findest du den Abstand.");
-
-      add("Kontrolle: Ergebnis ist kleiner als die Startgruppe.", "");
-
-    }
-
-    if(op === "×"){
-
-      add("Schau auf das Bild: Es gibt mehrere gleiche Gruppen.", "In jeder Gruppe sind gleich viele.");
-
-      add("Zähle gruppenweise.", "Immer wieder die gleiche Anzahl dazu.");
-
-      add("Wenn es hilft: Teile die Gruppen auf.", "Erst einige Gruppen zählen, dann die restlichen.");
-
-      add("Kontrolle: Mehr Gruppen oder mehr pro Gruppe = größeres Ergebnis.", "");
-
-    }
-
-    if(op === "÷"){
-
-      add("Schau auf das Bild: Es ist schon fair verteilt.", "Jede Gruppe sieht gleich aus.");
-
-      add("Zähle in einer Gruppe nach.", "Das ist das Ergebnis.");
-
-      add("Kontrolle: Rechne zurück.", "Ergebnis mal Anzahl der Gruppen ergibt wieder die Startmenge.");
-
-    }
-
-    return steps;
+    if(type==="warn") feedback.classList.add("warn");
 
   }
 
  
 
-  function svgScene(a, b, op, theme){
+  function divWithRemainder(a,b){
 
-    const W = 760, H = 340;
+    const q = Math.floor(a / b);
 
-    const palettes = {
+    const r = a - q*b;
 
-      warm: { c1:"#f2d6b3", c2:"#ddb78f", c3:"#c99c70", hi:"rgba(255,107,107,.70)" },
+    return {q, r};
 
-      pink: { c1:"#f7c6dd", c2:"#f2a7cc", c3:"#de86b4", hi:"rgba(255,107,107,.70)" },
-
-      sky:  { c1:"#cfe9ff", c2:"#a9d7ff", c3:"#7cc3ff", hi:"rgba(77,171,247,.75)" },
-
-      sun:  { c1:"#ffe8a3", c2:"#ffd966", c3:"#ffc44d", hi:"rgba(255,212,59,.90)" },
-
-      mint: { c1:"#c8f7df", c2:"#9feec8", c3:"#6fe2a7", hi:"rgba(81,207,102,.75)" },
-
-      ocean:{ c1:"#cfefff", c2:"#9fdcff", c3:"#6fc8ff", hi:"rgba(77,171,247,.75)" }
-
-    };
-
-    const pal = palettes[theme.palette] || palettes.warm;
+  }
 
  
 
-    const itemId = theme.item;
+  function normalizeTask(a, b, op){
 
-    const contId = theme.container;
+    a = clamp(a, 0, 100);
 
- 
-
-    function drawItemsGrid(x, y, n, size, cols, gap){
-
-      let s = `<g>`;
-
-      for(let i=0;i<n;i++){
-
-        const cx = x + (i % cols) * gap;
-
-        const cy = y + Math.floor(i / cols) * gap;
-
-        s += `<use href="#${itemId}" x="${cx}" y="${cy}" width="${size}" height="${size}"/>`;
-
-      }
-
-      s += `</g>`;
-
-      return s;
-
-    }
-
- 
-
-    function drawContainersGrid(x, y, count, perRow, w, h, gapX, gapY){
-
-      let s = `<g>`;
-
-      for(let i=0;i<count;i++){
-
-        const cx = x + (i % perRow) * (w + gapX);
-
-        const cy = y + Math.floor(i / perRow) * (h + gapY);
-
-        s += `<use href="#${contId}" x="${cx}" y="${cy}" width="${w}" height="${h}"/>`;
-
-      }
-
-      s += `</g>`;
-
-      return s;
-
-    }
-
- 
-
-    const defs = `
-
-      <defs>
-
-        <filter id="shadow" x="-50%" y="-50%" width="200%" height="200%">
-
-          <feDropShadow dx="0" dy="8" stdDeviation="8" flood-color="rgba(34,49,74,.25)"/>
-
-        </filter>
-
- 
-
-        <linearGradient id="contGrad" x1="0" x2="0" y1="0" y2="1">
-
-          <stop offset="0" stop-color="${pal.c1}"/>
-
-          <stop offset="0.6" stop-color="${pal.c2}"/>
-
-          <stop offset="1" stop-color="${pal.c3}"/>
-
-        </linearGradient>
-
-        <radialGradient id="shine" cx="30%" cy="25%" r="70%">
-
-          <stop offset="0" stop-color="rgba(255,255,255,.70)"/>
-
-          <stop offset="1" stop-color="rgba(255,255,255,0)"/>
-
-        </radialGradient>
-
- 
-
-        <!-- Containers -->
-
-        <symbol id="bag" viewBox="0 0 120 140">
-
-          <path d="M34 38 C34 18, 52 10, 60 10 C68 10, 86 18, 86 38"
-
-                fill="none" stroke="rgba(90,60,40,.75)" stroke-width="6" stroke-linecap="round"/>
-
-          <path d="M40 38 C40 22, 54 16, 60 16 C66 16, 80 22, 80 38"
-
-                fill="none" stroke="rgba(255,255,255,.35)" stroke-width="3" stroke-linecap="round"/>
-
-          <path d="M22 46 L98 46 L90 130 Q60 138 30 130 Z" fill="url(#contGrad)" filter="url(#shadow)"/>
-
-          <path d="M22 46 L98 46" stroke="rgba(90,60,40,.28)" stroke-width="2"/>
-
-          <path d="M22 46 L98 46 L96 60 Q60 66 24 60 Z" fill="rgba(255,255,255,.16)"/>
-
-          <ellipse cx="46" cy="68" rx="36" ry="26" fill="url(#shine)" opacity="0.55"/>
-
-        </symbol>
-
- 
-
-        <symbol id="box" viewBox="0 0 140 120">
-
-          <path d="M20 42 L70 18 L120 42 L70 66 Z" fill="rgba(255,255,255,.22)"/>
-
-          <path d="M20 42 L70 66 L70 110 L20 86 Z" fill="url(#contGrad)" filter="url(#shadow)"/>
-
-          <path d="M120 42 L70 66 L70 110 L120 86 Z" fill="rgba(0,0,0,.08)"/>
-
-          <path d="M20 42 L70 66 L120 42" fill="none" stroke="rgba(34,49,74,.18)" stroke-width="2"/>
-
-          <ellipse cx="60" cy="54" rx="42" ry="28" fill="url(#shine)" opacity="0.45"/>
-
-        </symbol>
-
- 
-
-        <symbol id="basket" viewBox="0 0 140 120">
-
-          <path d="M45 28 C55 10, 85 10, 95 28" fill="none" stroke="rgba(34,49,74,.25)" stroke-width="6" stroke-linecap="round"/>
-
-          <path d="M26 44 L114 44 L104 104 Q70 116 36 104 Z" fill="url(#contGrad)" filter="url(#shadow)"/>
-
-          <path d="M32 50 L108 50" stroke="rgba(34,49,74,.18)" stroke-width="2"/>
-
-          <path d="M34 54 L42 104 M50 54 L56 108 M66 54 L70 110 M82 54 L84 108 M98 54 L96 104"
-
-                stroke="rgba(255,255,255,.25)" stroke-width="3" stroke-linecap="round"/>
-
-          <ellipse cx="60" cy="64" rx="42" ry="30" fill="url(#shine)" opacity="0.40"/>
-
-        </symbol>
-
- 
-
-        <symbol id="tray" viewBox="0 0 520 110">
-
-          <path d="M40 44 H480" stroke="rgba(34,49,74,.25)" stroke-width="10" stroke-linecap="round"/>
-
-          <path d="M36 52 Q260 92 484 52" fill="none" stroke="rgba(34,49,74,.18)" stroke-width="10" stroke-linecap="round"/>
-
-          <path d="M30 58 Q260 108 490 58" fill="none" stroke="rgba(77,171,247,.12)" stroke-width="18" stroke-linecap="round"/>
-
-          <rect x="26" y="28" width="468" height="42" rx="20" fill="rgba(255,255,255,.55)" stroke="rgba(34,49,74,.10)"/>
-
-          <ellipse cx="170" cy="40" rx="90" ry="24" fill="url(#shine)" opacity="0.35"/>
-
-        </symbol>
-
- 
-
-        <!-- Hand -->
-
-        <symbol id="hand" viewBox="0 0 240 140">
-
-          <path d="M54 94 C66 74, 82 66, 98 68 C106 52, 126 46, 140 54 C154 44, 172 50, 178 64
-
-                   C192 62, 206 76, 198 90 C196 114, 166 132, 126 134 C86 136, 60 122, 54 94 Z"
-
-                fill="rgba(255,224,194,.95)" stroke="rgba(34,49,74,.12)" stroke-width="2" filter="url(#shadow)"/>
-
-          <path d="M98 68 C100 84, 98 96, 90 106" fill="none" stroke="rgba(34,49,74,.12)" stroke-width="2" stroke-linecap="round"/>
-
-          <path d="M138 56 C140 76, 138 96, 126 112" fill="none" stroke="rgba(34,49,74,.10)" stroke-width="2" stroke-linecap="round"/>
-
-          <path d="M172 64 C170 82, 162 102, 146 116" fill="none" stroke="rgba(34,49,74,.10)" stroke-width="2" stroke-linecap="round"/>
-
-        </symbol>
-
- 
-
-        <!-- Items -->
-
-        <symbol id="apple" viewBox="0 0 60 60">
-
-          <defs>
-
-            <radialGradient id="appleGrad" cx="35%" cy="30%" r="75%">
-
-              <stop offset="0" stop-color="#ffb3b3"/>
-
-              <stop offset="0.55" stop-color="#ff3b30"/>
-
-              <stop offset="1" stop-color="#c71b12"/>
-
-            </radialGradient>
-
-            <linearGradient id="leafGrad" x1="0" x2="1">
-
-              <stop offset="0" stop-color="#5ee26b"/>
-
-              <stop offset="1" stop-color="#1f8a3f"/>
-
-            </linearGradient>
-
-          </defs>
-
-          <circle cx="30" cy="33" r="18" fill="url(#appleGrad)" filter="url(#shadow)"/>
-
-          <ellipse cx="24" cy="26" rx="8" ry="10" fill="rgba(255,255,255,.22)"/>
-
-          <path d="M30 16 C28 10, 32 8, 34 6" stroke="#5b3a1f" stroke-width="3" stroke-linecap="round"/>
-
-          <path d="M34 10 C44 10, 46 18, 36 22 C30 24, 28 14, 34 10 Z" fill="url(#leafGrad)"/>
-
-        </symbol>
-
- 
-
-        <symbol id="candy" viewBox="0 0 70 50">
-
-          <defs>
-
-            <linearGradient id="candyGrad" x1="0" x2="1">
-
-              <stop offset="0" stop-color="#ff8fc1"/>
-
-              <stop offset="1" stop-color="#ff4d9d"/>
-
-            </linearGradient>
-
-          </defs>
-
-          <path d="M12 25 L2 14 L6 10 L18 20 Z" fill="rgba(255,255,255,.28)"/>
-
-          <path d="M58 25 L68 14 L64 10 L52 20 Z" fill="rgba(255,255,255,.28)"/>
-
-          <rect x="16" y="12" width="38" height="26" rx="12" fill="url(#candyGrad)" filter="url(#shadow)"/>
-
-          <ellipse cx="30" cy="18" rx="12" ry="8" fill="rgba(255,255,255,.25)"/>
-
-        </symbol>
-
- 
-
-        <symbol id="star" viewBox="0 0 60 60">
-
-          <defs>
-
-            <radialGradient id="starGrad" cx="30%" cy="30%" r="80%">
-
-              <stop offset="0" stop-color="#fff7b2"/>
-
-              <stop offset="1" stop-color="#ffd43b"/>
-
-            </radialGradient>
-
-          </defs>
-
-          <path d="M30 6 L37 22 L54 22 L40 32 L46 50 L30 39 L14 50 L20 32 L6 22 L23 22 Z"
-
-                fill="url(#starGrad)" filter="url(#shadow)"/>
-
-          <path d="M20 20 C26 16, 34 16, 40 20" stroke="rgba(255,255,255,.35)" stroke-width="3" stroke-linecap="round"/>
-
-        </symbol>
-
- 
-
-        <symbol id="pencil" viewBox="0 0 70 70">
-
-          <defs>
-
-            <linearGradient id="penGrad" x1="0" x2="1">
-
-              <stop offset="0" stop-color="#ffd43b"/>
-
-              <stop offset="1" stop-color="#ff922b"/>
-
-            </linearGradient>
-
-          </defs>
-
-          <path d="M14 50 L50 14 L58 22 L22 58 L12 60 Z" fill="url(#penGrad)" filter="url(#shadow)"/>
-
-          <path d="M50 14 L56 8 L62 14 L58 22 Z" fill="rgba(34,49,74,.25)"/>
-
-          <path d="M20 56 L54 22" stroke="rgba(255,255,255,.35)" stroke-width="4" stroke-linecap="round"/>
-
-        </symbol>
-
- 
-
-        <symbol id="ball" viewBox="0 0 60 60">
-
-          <circle cx="30" cy="30" r="20" fill="rgba(255,255,255,.95)" stroke="rgba(34,49,74,.25)" stroke-width="2" filter="url(#shadow)"/>
-
-          <path d="M30 14 L38 20 L35 30 L25 30 L22 20 Z" fill="rgba(34,49,74,.20)"/>
-
-          <path d="M22 20 L14 28 L18 40 L25 30 Z" fill="rgba(34,49,74,.14)"/>
-
-          <path d="M38 20 L46 28 L42 40 L35 30 Z" fill="rgba(34,49,74,.14)"/>
-
-        </symbol>
-
- 
-
-        <symbol id="fish" viewBox="0 0 70 50">
-
-          <defs>
-
-            <linearGradient id="fishGrad" x1="0" x2="1">
-
-              <stop offset="0" stop-color="#6fc8ff"/>
-
-              <stop offset="1" stop-color="#2f9cff"/>
-
-            </linearGradient>
-
-          </defs>
-
-          <path d="M12 25 C18 12, 34 8, 46 14 C56 20, 56 30, 46 36 C34 42, 18 38, 12 25 Z"
-
-                fill="url(#fishGrad)" filter="url(#shadow)"/>
-
-          <path d="M46 14 L66 6 L60 25 L66 44 Z" fill="rgba(34,49,74,.18)"/>
-
-          <circle cx="26" cy="24" r="3" fill="rgba(34,49,74,.75)"/>
-
-          <path d="M18 28 C22 32, 28 32, 32 28" fill="none" stroke="rgba(255,255,255,.35)" stroke-width="3" stroke-linecap="round"/>
-
-        </symbol>
-
- 
-
-        <symbol id="cup" viewBox="0 0 70 70">
-
-          <defs>
-
-            <linearGradient id="cupGrad" x1="0" x2="1">
-
-              <stop offset="0" stop-color="#ff6b6b"/>
-
-              <stop offset="1" stop-color="#4dabf7"/>
-
-            </linearGradient>
-
-          </defs>
-
-          <path d="M18 18 H44 Q50 18 50 24 V46 Q50 56 40 56 H22 Q18 56 18 52 Z"
-
-                fill="url(#cupGrad)" filter="url(#shadow)"/>
-
-          <path d="M44 24 H52 Q58 24 58 30 V36 Q58 44 50 44 H44 Z"
-
-                fill="rgba(255,255,255,.18)"/>
-
-          <rect x="18" y="16" width="32" height="6" rx="3" fill="rgba(255,255,255,.25)"/>
-
-          <path d="M18 40 H50" stroke="rgba(255,255,255,.22)" stroke-width="4" stroke-linecap="round"/>
-
-        </symbol>
-
- 
-
-        <!-- operator pills -->
-
-        <symbol id="pillPlus" viewBox="0 0 70 46">
-
-          <rect x="2" y="2" width="66" height="42" rx="16" fill="rgba(255,212,59,.35)" stroke="rgba(34,49,74,.12)"/>
-
-          <text x="35" y="30" text-anchor="middle" font-size="22" font-weight="950" fill="rgba(34,49,74,.70)">+</text>
-
-        </symbol>
-
-        <symbol id="pillMinus" viewBox="0 0 70 46">
-
-          <rect x="2" y="2" width="66" height="42" rx="16" fill="rgba(255,107,107,.18)" stroke="rgba(34,49,74,.12)"/>
-
-          <text x="35" y="30" text-anchor="middle" font-size="22" font-weight="950" fill="rgba(34,49,74,.70)">−</text>
-
-        </symbol>
-
-        <symbol id="pillTimes" viewBox="0 0 70 46">
-
-          <rect x="2" y="2" width="66" height="42" rx="16" fill="rgba(77,171,247,.18)" stroke="rgba(34,49,74,.12)"/>
-
-          <text x="35" y="30" text-anchor="middle" font-size="22" font-weight="950" fill="rgba(34,49,74,.70)">×</text>
-
-        </symbol>
-
-        <symbol id="pillDiv" viewBox="0 0 70 46">
-
-          <rect x="2" y="2" width="66" height="42" rx="16" fill="rgba(81,207,102,.18)" stroke="rgba(34,49,74,.12)"/>
-
-          <text x="35" y="30" text-anchor="middle" font-size="22" font-weight="950" fill="rgba(34,49,74,.70)">÷</text>
-
-        </symbol>
-
- 
-
-        <!-- highlight ring for taken items -->
-
-        <symbol id="ring" viewBox="0 0 60 60">
-
-          <circle cx="30" cy="30" r="26" fill="rgba(255,107,107,.12)" stroke="rgba(255,107,107,.65)" stroke-width="4"/>
-
-        </symbol>
-
-      </defs>
-
-    `;
-
- 
-
-    const bg = `
-
-      <rect x="0" y="0" width="${W}" height="${H}" rx="18" fill="rgba(255,255,255,.65)"/>
-
-      <rect x="0" y="${H-96}" width="${W}" height="96" rx="18" fill="rgba(234,247,255,.85)"/>
-
-      <path d="M0 ${H-96} C200 ${H-130}, 560 ${H-54}, ${W} ${H-96}" fill="rgba(77,171,247,.10)"/>
-
-    `;
-
- 
-
-    let content = "";
-
- 
-
-    if(op === "+"){
-
-      content += `<use href="#pillPlus" x="22" y="16" width="70" height="46"/>`;
-
-      content += `<g transform="translate(22,60)">
-
-        <rect x="0" y="0" width="330" height="230" rx="18" fill="rgba(255,255,255,.62)" stroke="rgba(34,49,74,.10)"/>
-
-        ${drawItemsGrid(18, 18, a, 30, 10, 30)}
-
-      </g>`;
-
-      content += `<g transform="translate(408,60)">
-
-        <rect x="0" y="0" width="330" height="230" rx="18" fill="rgba(255,255,255,.62)" stroke="rgba(34,49,74,.10)"/>
-
-        ${drawItemsGrid(18, 18, b, 30, 10, 30)}
-
-      </g>`;
-
-      content += `<g opacity="0.95">
-
-        <circle cx="380" cy="170" r="26" fill="rgba(255,107,107,.18)" stroke="rgba(34,49,74,.10)"/>
-
-        <text x="380" y="178" text-anchor="middle" font-size="26" font-weight="950" fill="rgba(34,49,74,.70)">+</text>
-
-      </g>`;
-
-    }
-
- 
-
-    if(op === "-"){
-
-      // NEW: Hand takes "b" items OUT OF the same full set.
-
-      // We show ALL a items. The taken b items are highlighted with rings and also duplicated near the hand (still visible).
-
-      content += `<use href="#pillMinus" x="22" y="16" width="70" height="46"/>`;
-
- 
-
-      // Tray
-
-      content += `<g transform="translate(34,186)">
-
-        <use href="#tray" x="0" y="-90" width="520" height="110" opacity="0.95"/>
-
-      </g>`;
-
- 
-
-      // Place all A items on tray area
-
-      const size = 26, cols = 12, gap = 28;
-
-      const startX = 64, startY = 82;
-
- 
-
-      // Choose which indices are "taken" (b of them) – deterministic-ish by values
-
-      const idxs = [];
-
-      for(let i=0;i<a;i++) idxs.push(i);
-
-      // pseudo shuffle
-
-      let seed = (a*97 + b*131 + 17) % 997;
-
-      function rnd(){ seed = (seed*37 + 11) % 997; return seed/997; }
-
-      for(let i=idxs.length-1;i>0;i--){
-
-        const j = Math.floor(rnd()*(i+1));
-
-        [idxs[i], idxs[j]] = [idxs[j], idxs[i]];
-
-      }
-
-      const takenSet = new Set(idxs.slice(0, Math.min(b,a)));
-
- 
-
-      // Draw all items + highlight rings for taken ones
-
-      let trayItems = `<g>`;
-
-      for(let i=0;i<a;i++){
-
-        const cx = startX + (i % cols) * gap;
-
-        const cy = startY + Math.floor(i / cols) * gap;
-
-        trayItems += `<use href="#${itemId}" x="${cx}" y="${cy}" width="${size}" height="${size}"/>`;
-
-        if(takenSet.has(i)){
-
-          trayItems += `<use href="#ring" x="${cx-8}" y="${cy-8}" width="${size+16}" height="${size+16}" opacity="0.95"/>`;
-
-        }
-
-      }
-
-      trayItems += `</g>`;
-
-      content += trayItems;
-
- 
-
-      // Hand position (overlapping right side)
-
-      content += `<g transform="translate(540,40) rotate(-8 0 0)">
-
-        <use href="#hand" x="0" y="0" width="240" height="140" opacity="0.98"/>
-
-      </g>`;
-
- 
-
-      // Show the taken items near the hand (still visible) as a little cluster
-
-      const takenCount = Math.min(b, a);
-
-      const clusterX = 540, clusterY = 170;
-
-      content += `<g>
-
-        <rect x="${clusterX}" y="${clusterY-18}" width="200" height="130" rx="18" fill="rgba(255,255,255,.62)" stroke="rgba(34,49,74,.10)"/>
-
-      </g>`;
-
-      // draw taken items in the cluster
-
-      let k = 0;
-
-      for(let i=0;i<a;i++){
-
-        if(!takenSet.has(i)) continue;
-
-        const cx = clusterX + 18 + (k % 6) * 28;
-
-        const cy = clusterY + 6 + Math.floor(k / 6) * 28;
-
-        content += `<use href="#${itemId}" x="${cx}" y="${cy}" width="28" height="28"/>`;
-
-        k++;
-
-        if(k >= takenCount) break;
-
-      }
-
- 
-
-      // Motion arrow from tray to hand cluster
-
-      content += `
-
-        <path d="M470 152 C520 118, 560 126, 610 154" fill="none" stroke="${pal.hi}" stroke-width="6" stroke-linecap="round"/>
-
-        <path d="M610 154 L594 144 L594 164 Z" fill="${pal.hi}"/>
-
-      `;
-
-    }
-
- 
-
-    if(op === "×"){
-
-      content += `<use href="#pillTimes" x="22" y="16" width="70" height="46"/>`;
-
- 
-
-      const perRow = 4;
-
-      const contW = 120, contH = 120;
-
-      const gridX = 22, gridY = 60, gapX = 18, gapY = 18;
-
- 
-
-      content += `<g transform="translate(${gridX},${gridY})">
-
-        <rect x="0" y="0" width="716" height="250" rx="18" fill="rgba(255,255,255,.62)" stroke="rgba(34,49,74,.10)"/>
-
-        ${drawContainersGrid(14, 14, a, perRow, contW, contH, gapX, gapY)}
-
-      </g>`;
-
- 
-
-      for(let i=0;i<a;i++){
-
-        const cx = 14 + (i % perRow) * (contW + gapX);
-
-        const cy = 14 + Math.floor(i / perRow) * (contH + gapY);
-
-        const innerCols = 5, innerGap = 16, innerSize = 16;
-
-        const startX2 = gridX + cx + 16;
-
-        const startY2 = gridY + cy + 70;
-
-        for(let j=0;j<b;j++){
-
-          const px = startX2 + (j % innerCols) * innerGap;
-
-          const py = startY2 + Math.floor(j / innerCols) * innerGap;
-
-          content += `<use href="#${itemId}" x="${px}" y="${py}" width="${innerSize}" height="${innerSize}"/>`;
-
-        }
-
-      }
-
-    }
-
- 
+    b = clamp(b, 0, 100);
 
     if(op === "÷"){
 
-      content += `<use href="#pillDiv" x="22" y="16" width="70" height="46"/>`;
-
- 
-
-      const groups = b;
-
-      const each = Math.floor(a / b);
-
- 
-
-      const perRow = 4;
-
-      const contW = 150, contH = 150;
-
-      const gridX = 22, gridY = 60, gapX = 18, gapY = 18;
-
- 
-
-      content += `<g transform="translate(${gridX},${gridY})">
-
-        <rect x="0" y="0" width="716" height="250" rx="18" fill="rgba(255,255,255,.62)" stroke="rgba(34,49,74,.10)"/>
-
-        ${drawContainersGrid(14, 14, groups, perRow, contW, contH, gapX, gapY)}
-
-      </g>`;
-
- 
-
-      for(let i=0;i<groups;i++){
-
-        const cx = 14 + (i % perRow) * (contW + gapX);
-
-        const cy = 14 + Math.floor(i / perRow) * (contH + gapY);
-
- 
-
-        const innerCols = 10, innerGap = 12, innerSize = 12;
-
-        const startX2 = gridX + cx + 18;
-
-        const startY2 = gridY + cy + 70;
-
- 
-
-        for(let j=0;j<each;j++){
-
-          const px = startX2 + (j % innerCols) * innerGap;
-
-          const py = startY2 + Math.floor(j / innerCols) * innerGap;
-
-          content += `<use href="#${itemId}" x="${px}" y="${py}" width="${innerSize}" height="${innerSize}"/>`;
-
-        }
-
-      }
+      b = clamp(b, 1, 100);
 
     }
 
+    if(op === "-" && b > a) [a,b] = [b,a];
+
+    return {a,b};
+
+  }
+
  
 
-    return `
+  function taskWithinRange(a,b,op){
 
-      <svg viewBox="0 0 ${W} ${H}" width="100%" height="auto" role="img" aria-label="Rechenbild">
+    if(a < 0 || a > 100 || b < 0 || b > 100) return false;
 
-        ${defs}
+    if(op === "+") return (a + b) <= 100;
 
-        ${bg}
+    if(op === "-") return (a - b) >= 0;
 
-        ${content}
+    if(op === "×") return (a * b) <= 100;
 
-      </svg>
+    if(op === "÷") return (b !== 0);
 
-    `;
+    return false;
+
+  }
+
+ 
+
+  function computeResult(a,b,op){
+
+    if(op === "+") return { value: a + b };
+
+    if(op === "-") return { value: a - b };
+
+    if(op === "×") return { value: a * b };
+
+    if(op === "÷") return divWithRemainder(a,b);
+
+    return { value: NaN };
+
+  }
+
+ 
+
+  function syncAnswerInputs(){
+
+    const isDiv = (op === "÷");
+
+    answerRowDefault.classList.toggle("hidden", isDiv);
+
+    answerRowDiv.classList.toggle("hidden", !isDiv);
+
+    answerIn.value=""; quotIn.value=""; restIn.value="";
+
+  }
+
+ 
+
+  function buildStepsForTask(a,b,op){
+
+    if(op === "+") return [
+
+      {title:`Starte bei ${Math.max(a,b)}.`, mini:`Zähle ${Math.min(a,b)} weiter.`},
+
+      {title:`Wenn es viele sind: zerlege die zweite Zahl.`, mini:`Beispiel: 7 = 5 + 2.`},
+
+      {title:`Kontrolle: Ergebnis ist nicht größer als 100.`, mini:""}
+
+    ];
+
+    if(op === "-") return [
+
+      {title:`Starte bei ${a}.`, mini:`Zähle ${b} zurück.`},
+
+      {title:`Wenn es viele sind: zerlege die zweite Zahl.`, mini:`Beispiel: 12 = 10 + 2.`},
+
+      {title:`Kontrolle: Ergebnis ist nicht negativ.`, mini:""}
+
+    ];
+
+    if(op === "×") return [
+
+      {title:`${a} mal ${b} bedeutet: ${a} Gruppen mit je ${b}.`, mini:""},
+
+      {title:`Zähle gruppenweise: immer wieder ${b} dazu.`, mini:""},
+
+      {title:`Kontrolle: Ergebnis ist nicht größer als 100.`, mini:""}
+
+    ];
+
+    // ÷
+
+    return [
+
+      {title:`Teile ${a} auf ${b} Behälter auf.`, mini:""},
+
+      {title:`Wie viele liegen in jedem Behälter?`, mini:"Das ist das Ergebnis."},
+
+      {title:`Was übrig bleibt, ist der Rest.`, mini:`Der Rest ist kleiner als ${b}.`},
+
+      {title:`Kontrolle: ${b} × Ergebnis + Rest = ${a}.`, mini:""}
+
+    ];
 
   }
 
@@ -1922,25 +1208,17 @@
 
  
 
-    if(revealedCount >= steps.length && steps.length > 0){
+    if(revealedCount >= steps.length){
 
       bulbBtn.innerHTML = `<span class="bulb" aria-hidden="true">✅</span> Fertig`;
 
       bulbBtn.disabled = true;
-
-      bulbBtn.style.opacity = 0.75;
-
-      bulbBtn.style.cursor = "default";
 
     }else{
 
       bulbBtn.innerHTML = `<span class="bulb" aria-hidden="true">💡</span> Hilfe`;
 
       bulbBtn.disabled = false;
-
-      bulbBtn.style.opacity = 1;
-
-      bulbBtn.style.cursor = "pointer";
 
     }
 
@@ -1950,8 +1228,6 @@
 
   function revealNextStep(){
 
-    if(!current.steps || current.steps.length === 0) return;
-
     current.stepIndex = clamp(current.stepIndex + 1, 0, current.steps.length);
 
     renderSteps(current.steps, current.stepIndex);
@@ -1960,59 +1236,789 @@
 
  
 
-  function updateTaskLabel(){
+  // ===== SVG helpers (lightweight; division uses your 2-per-row layout) =====
 
-    const a = clamp(parseInt(aIn.value || "0", 10), 0, RANGE_MAX);
+  function svgDefs(pal){
 
-    const b = clamp(parseInt(bIn.value || "0", 10), 0, RANGE_MAX);
+    return `
 
-    taskKbd.textContent = `${a} ${op} ${b}`;
+      <defs>
+
+        <filter id="shadow" x="-50%" y="-50%" width="200%" height="200%">
+
+          <feDropShadow dx="0" dy="8" stdDeviation="8" flood-color="rgba(34,49,74,.25)"/>
+
+        </filter>
+
+        <linearGradient id="contGrad" x1="0" x2="0" y1="0" y2="1">
+
+          <stop offset="0" stop-color="${pal.c1}"/>
+
+          <stop offset="0.6" stop-color="${pal.c2}"/>
+
+          <stop offset="1" stop-color="${pal.c3}"/>
+
+        </linearGradient>
+
+        <radialGradient id="shine" cx="30%" cy="25%" r="70%">
+
+          <stop offset="0" stop-color="rgba(255,255,255,.70)"/>
+
+          <stop offset="1" stop-color="rgba(255,255,255,0)"/>
+
+        </radialGradient>
+
+ 
+
+        <symbol id="bag" viewBox="0 0 120 140">
+
+          <path d="M34 38 C34 18, 52 10, 60 10 C68 10, 86 18, 86 38" fill="none" stroke="rgba(90,60,40,.75)" stroke-width="6" stroke-linecap="round"/>
+
+          <path d="M22 46 L98 46 L90 130 Q60 138 30 130 Z" fill="url(#contGrad)" filter="url(#shadow)"/>
+
+          <ellipse cx="46" cy="68" rx="36" ry="26" fill="url(#shine)" opacity="0.55"/>
+
+        </symbol>
+
+        <symbol id="box" viewBox="0 0 140 120">
+
+          <path d="M20 42 L70 18 L120 42 L70 66 Z" fill="rgba(255,255,255,.22)"/>
+
+          <path d="M20 42 L70 66 L70 110 L20 86 Z" fill="url(#contGrad)" filter="url(#shadow)"/>
+
+          <path d="M120 42 L70 66 L70 110 L120 86 Z" fill="rgba(0,0,0,.08)"/>
+
+          <ellipse cx="60" cy="54" rx="42" ry="28" fill="url(#shine)" opacity="0.45"/>
+
+        </symbol>
+
+        <symbol id="tray" viewBox="0 0 520 110">
+
+          <path d="M40 44 H480" stroke="rgba(34,49,74,.25)" stroke-width="10" stroke-linecap="round"/>
+
+          <path d="M36 52 Q260 92 484 52" fill="none" stroke="rgba(34,49,74,.18)" stroke-width="10" stroke-linecap="round"/>
+
+          <rect x="26" y="28" width="468" height="42" rx="20" fill="rgba(255,255,255,.55)" stroke="rgba(34,49,74,.10)"/>
+
+          <ellipse cx="170" cy="40" rx="90" ry="24" fill="url(#shine)" opacity="0.35"/>
+
+        </symbol>
+
+        <symbol id="bucket" viewBox="0 0 140 150">
+
+          <path d="M30 45 C30 26 52 14 70 14 C88 14 110 26 110 45"
+
+                fill="none" stroke="rgba(34,49,74,.22)" stroke-width="7" stroke-linecap="round"/>
+
+          <path d="M34 52 H106 L96 132 Q70 144 44 132 Z" fill="url(#contGrad)" filter="url(#shadow)"/>
+
+          <path d="M34 52 H106" stroke="rgba(34,49,74,.12)" stroke-width="3"/>
+
+          <ellipse cx="56" cy="76" rx="40" ry="28" fill="url(#shine)" opacity="0.45"/>
+
+        </symbol>
+
+ 
+
+        <symbol id="apple" viewBox="0 0 60 60">
+
+          <defs>
+
+            <radialGradient id="appleGrad" cx="35%" cy="30%" r="75%">
+
+              <stop offset="0" stop-color="#ffb3b3"/>
+
+              <stop offset="0.55" stop-color="#ff3b30"/>
+
+              <stop offset="1" stop-color="#c71b12"/>
+
+            </radialGradient>
+
+          </defs>
+
+          <circle cx="30" cy="33" r="18" fill="url(#appleGrad)" filter="url(#shadow)"/>
+
+          <ellipse cx="24" cy="26" rx="8" ry="10" fill="rgba(255,255,255,.22)"/>
+
+        </symbol>
+
+        <symbol id="candy" viewBox="0 0 70 50">
+
+          <defs><linearGradient id="candyGrad" x1="0" x2="1">
+
+            <stop offset="0" stop-color="#ff8fc1"/><stop offset="1" stop-color="#ff4d9d"/>
+
+          </linearGradient></defs>
+
+          <rect x="16" y="12" width="38" height="26" rx="12" fill="url(#candyGrad)" filter="url(#shadow)"/>
+
+          <ellipse cx="30" cy="18" rx="12" ry="8" fill="rgba(255,255,255,.25)"/>
+
+        </symbol>
+
+        <symbol id="star" viewBox="0 0 60 60">
+
+          <defs><radialGradient id="starGrad" cx="30%" cy="30%" r="80%">
+
+            <stop offset="0" stop-color="#fff7b2"/><stop offset="1" stop-color="#ffd43b"/>
+
+          </radialGradient></defs>
+
+          <path d="M30 6 L37 22 L54 22 L40 32 L46 50 L30 39 L14 50 L20 32 L6 22 L23 22 Z"
+
+                fill="url(#starGrad)" filter="url(#shadow)"/>
+
+        </symbol>
+
+        <symbol id="pencil" viewBox="0 0 70 70">
+
+          <defs><linearGradient id="penGrad" x1="0" x2="1">
+
+            <stop offset="0" stop-color="#ffd43b"/><stop offset="1" stop-color="#ff922b"/>
+
+          </linearGradient></defs>
+
+          <path d="M14 50 L50 14 L58 22 L22 58 L12 60 Z" fill="url(#penGrad)" filter="url(#shadow)"/>
+
+        </symbol>
+
+        <symbol id="ball" viewBox="0 0 60 60">
+
+          <circle cx="30" cy="30" r="20" fill="rgba(255,255,255,.95)" stroke="rgba(34,49,74,.25)" stroke-width="2" filter="url(#shadow)"/>
+
+        </symbol>
+
+        <symbol id="fish" viewBox="0 0 70 50">
+
+          <defs><linearGradient id="fishGrad" x1="0" x2="1">
+
+            <stop offset="0" stop-color="#6fc8ff"/><stop offset="1" stop-color="#2f9cff"/>
+
+          </linearGradient></defs>
+
+          <path d="M12 25 C18 12, 34 8, 46 14 C56 20, 56 30, 46 36 C34 42, 18 38, 12 25 Z"
+
+                fill="url(#fishGrad)" filter="url(#shadow)"/>
+
+          <circle cx="26" cy="24" r="3" fill="rgba(34,49,74,.70)"/>
+
+        </symbol>
+
+        <symbol id="cup" viewBox="0 0 70 70">
+
+          <defs><linearGradient id="cupGrad" x1="0" x2="1">
+
+            <stop offset="0" stop-color="#ff6b6b"/><stop offset="1" stop-color="#4dabf7"/>
+
+          </linearGradient></defs>
+
+          <path d="M18 18 H44 Q50 18 50 24 V46 Q50 56 40 56 H22 Q18 56 18 52 Z"
+
+                fill="url(#cupGrad)" filter="url(#shadow)"/>
+
+        </symbol>
+
+      </defs>
+
+    `;
 
   }
 
-  function updateEquation(){
+ 
 
-    const a = clamp(parseInt(aIn.value || "0", 10), 0, RANGE_MAX);
+  const PALETTES = {
 
-    const b = clamp(parseInt(bIn.value || "0", 10), 0, RANGE_MAX);
+    warm: { c1:"#f2d6b3", c2:"#ddb78f", c3:"#c99c70", hi:"rgba(255,107,107,.70)" },
 
-    eqA.textContent = a;
+    pink: { c1:"#f7c6dd", c2:"#f2a7cc", c3:"#de86b4", hi:"rgba(255,107,107,.70)" },
 
-    eqB.textContent = b;
+    sky:  { c1:"#cfe9ff", c2:"#a9d7ff", c3:"#7cc3ff", hi:"rgba(77,171,247,.75)" },
 
-    eqOp.textContent = opToEmoji[op] || "➕";
+    sun:  { c1:"#ffe8a3", c2:"#ffd966", c3:"#ffc44d", hi:"rgba(255,212,59,.90)" },
+
+    mint: { c1:"#c8f7df", c2:"#9feec8", c3:"#6fe2a7", hi:"rgba(81,207,102,.75)" },
+
+    ocean:{ c1:"#cfefff", c2:"#9fdcff", c3:"#6fc8ff", hi:"rgba(77,171,247,.75)" }
+
+  };
+
+ 
+
+  function drawItemsGrid(itemId, x, y, n, size, cols, gap){
+
+    let s = `<g>`;
+
+    for(let i=0;i<n;i++){
+
+      const cx = x + (i % cols) * gap;
+
+      const cy = y + Math.floor(i / cols) * gap;
+
+      s += `<use href="#${itemId}" x="${cx}" y="${cy}" width="${size}" height="${size}"/>`;
+
+    }
+
+    s += `</g>`;
+
+    return s;
 
   }
 
-  function setFeedback(type, text){
+ 
 
-    feedback.classList.remove("show","good","bad");
+  // --- ADD ---
 
-    if(!text){ feedback.textContent = ""; return; }
+  function svgAdd(a,b,theme){
 
-    feedback.textContent = text;
+    const pal = PALETTES[theme.palette] || PALETTES.warm;
 
-    feedback.classList.add("show");
+    const itemId = theme.item;
 
-    if(type === "good") feedback.classList.add("good");
+    const cols = 10, gap = 30, size = 28;
 
-    if(type === "bad") feedback.classList.add("bad");
+    const rows = Math.ceil(Math.max(a,b)/cols);
+
+    const topY = 70;
+
+ 
+
+    const leftPanelW = 360, rightPanelW = 360, gapP = 30;
+
+    const W = 22 + leftPanelW + gapP + rightPanelW + 22;
+
+    const panelH = Math.max(220, 40 + rows*gap + 40);
+
+    const H = Math.max(360, topY + panelH + 90);
+
+ 
+
+    const bg = `
+
+      <rect x="0" y="0" width="${W}" height="${H}" rx="18" fill="rgba(255,255,255,.65)"/>
+
+      <rect x="0" y="${H-96}" width="${W}" height="96" rx="18" fill="rgba(234,247,255,.85)"/>
+
+      <path d="M0 ${H-96} C200 ${H-130}, ${W-200} ${H-54}, ${W} ${H-96}" fill="rgba(77,171,247,.10)"/>
+
+    `;
+
+ 
+
+    const leftX = 22, rightX = 22 + leftPanelW + gapP;
+
+    let content = `
+
+      <g transform="translate(${leftX},${topY})">
+
+        <rect x="0" y="0" width="${leftPanelW}" height="${panelH}" rx="18" fill="rgba(255,255,255,.62)" stroke="rgba(34,49,74,.10)"/>
+
+      </g>
+
+      <g transform="translate(${rightX},${topY})">
+
+        <rect x="0" y="0" width="${rightPanelW}" height="${panelH}" rx="18" fill="rgba(255,255,255,.62)" stroke="rgba(34,49,74,.10)"/>
+
+      </g>
+
+      <g opacity="0.95">
+
+        <circle cx="${leftX+leftPanelW+gapP/2}" cy="${topY+60}" r="24" fill="rgba(255,107,107,.16)" stroke="rgba(34,49,74,.10)"/>
+
+        <text x="${leftX+leftPanelW+gapP/2}" y="${topY+68}" text-anchor="middle" font-size="28" font-weight="950" fill="rgba(34,49,74,.70)">+</text>
+
+      </g>
+
+    `;
+
+    content += drawItemsGrid(itemId, leftX+18, topY+18, a, size, cols, gap);
+
+    content += drawItemsGrid(itemId, rightX+18, topY+18, b, size, cols, gap);
+
+ 
+
+    return `<svg viewBox="0 0 ${W} ${H}" width="100%" height="auto">${svgDefs(pal)}${bg}${content}</svg>`;
 
   }
 
-  function escapeHTML(str){
+ 
 
-    return String(str)
+  // --- SUB (hand takes away; all visible) ---
 
-      .replaceAll("&","&amp;")
+  function svgSub(a,b,theme){
 
-      .replaceAll("<","&lt;")
+    const pal = PALETTES[theme.palette] || PALETTES.warm;
 
-      .replaceAll(">","&gt;")
+    const itemId = theme.item;
 
-      .replaceAll('"',"&quot;")
+    const cols = 12, gap = 28, size = 24;
 
-      .replaceAll("'","&#039;");
+    const rows = Math.ceil(a/cols);
+
+    const topY = 70;
+
+ 
+
+    const W = 860;
+
+    const trayX = 22, trayY = topY+40;
+
+ 
+
+    const trayH = Math.max(240, 80 + rows*gap);
+
+    const H = Math.max(420, trayY + trayH + 120);
+
+ 
+
+    const bg = `
+
+      <rect x="0" y="0" width="${W}" height="${H}" rx="18" fill="rgba(255,255,255,.65)"/>
+
+      <rect x="0" y="${H-96}" width="${W}" height="96" rx="18" fill="rgba(234,247,255,.85)"/>
+
+      <path d="M0 ${H-96} C200 ${H-130}, ${W-200} ${H-54}, ${W} ${H-96}" fill="rgba(77,171,247,.10)"/>
+
+    `;
+
+ 
+
+    // choose taken indices deterministic-ish
+
+    const idxs = []; for(let i=0;i<a;i++) idxs.push(i);
+
+    let seed = (a*97 + b*131 + 17) % 997;
+
+    const rnd = ()=> (seed = (seed*37 + 11) % 997) / 997;
+
+    for(let i=idxs.length-1;i>0;i--){
+
+      const j = Math.floor(rnd()*(i+1));
+
+      [idxs[i], idxs[j]] = [idxs[j], idxs[i]];
+
+    }
+
+    const takenSet = new Set(idxs.slice(0, Math.min(b,a)));
+
+ 
+
+    let content = `
+
+      <g transform="translate(${trayX},${trayY})">
+
+        <rect x="0" y="0" width="${W-44}" height="${trayH}" rx="18" fill="rgba(255,255,255,.62)" stroke="rgba(34,49,74,.10)"/>
+
+      </g>
+
+    `;
+
+ 
+
+    const startX = trayX + 26, startY = trayY + 26;
+
+    for(let i=0;i<a;i++){
+
+      const cx = startX + (i % cols) * gap;
+
+      const cy = startY + Math.floor(i / cols) * gap;
+
+      content += `<use href="#${itemId}" x="${cx}" y="${cy}" width="${size}" height="${size}"/>`;
+
+      if(takenSet.has(i)){
+
+        content += `<circle cx="${cx+size/2}" cy="${cy+size/2}" r="${size/2+8}" fill="rgba(255,107,107,.10)" stroke="rgba(255,107,107,.65)" stroke-width="4"/>`;
+
+      }
+
+    }
+
+ 
+
+    // simple hand shape (symbol-like)
+
+    content += `
+
+      <g transform="translate(${W-250},${trayY-10}) rotate(-8)">
+
+        <path d="M54 94 C66 74, 82 66, 98 68 C106 52, 126 46, 140 54 C154 44, 172 50, 178 64
+
+                 C192 62, 206 76, 198 90 C196 114, 166 132, 126 134 C86 136, 60 122, 54 94 Z"
+
+              fill="rgba(255,224,194,.95)" stroke="rgba(34,49,74,.12)" stroke-width="2" filter="url(#shadow)"/>
+
+      </g>
+
+      <path d="M${W-330} ${trayY+40} C${W-280} ${trayY+10}, ${W-240} ${trayY+18}, ${W-190} ${trayY+42}"
+
+            fill="none" stroke="${pal.hi}" stroke-width="6" stroke-linecap="round"/>
+
+      <path d="M${W-190} ${trayY+42} L${W-206} ${trayY+32} L${W-206} ${trayY+52} Z" fill="${pal.hi}"/>
+
+    `;
+
+ 
+
+    return `<svg viewBox="0 0 ${W} ${H}" width="100%" height="auto">${svgDefs(pal)}${bg}${content}</svg>`;
+
+  }
+
+ 
+
+  // --- MULT (a groups, each with b items) ---
+
+  function svgMul(a,b,theme){
+
+    const pal = PALETTES[theme.palette] || PALETTES.warm;
+
+    const itemId = theme.item;
+
+    const contId = theme.container;
+
+    const perRow = 4;
+
+    const contW = 130, contH = 130, gapX = 18, gapY = 18;
+
+    const rows = Math.max(1, Math.ceil(a / perRow));
+
+    const topY = 70;
+
+    const W = 760;
+
+    const panelH = 24 + rows*contH + (rows-1)*gapY + 24;
+
+    const H = Math.max(420, topY + panelH + 120);
+
+ 
+
+    const bg = `
+
+      <rect x="0" y="0" width="${W}" height="${H}" rx="18" fill="rgba(255,255,255,.65)"/>
+
+      <rect x="0" y="${H-96}" width="${W}" height="96" rx="18" fill="rgba(234,247,255,.85)"/>
+
+      <path d="M0 ${H-96} C200 ${H-130}, ${W-200} ${H-54}, ${W} ${H-96}" fill="rgba(77,171,247,.10)"/>
+
+    `;
+
+ 
+
+    let content = `
+
+      <g transform="translate(22,${topY})">
+
+        <rect x="0" y="0" width="${W-44}" height="${panelH}" rx="18" fill="rgba(255,255,255,.62)" stroke="rgba(34,49,74,.10)"/>
+
+      </g>
+
+    `;
+
+ 
+
+    // draw containers
+
+    for(let i=0;i<a;i++){
+
+      const cx = 22+24 + (i % perRow) * (contW + gapX);
+
+      const cy = topY+24 + Math.floor(i / perRow) * (contH + gapY);
+
+      content += `<use href="#${contId}" x="${cx}" y="${cy}" width="${contW}" height="${contH}"/>`;
+
+ 
+
+      const innerCols = 5, innerGap = 16, innerSize = 16;
+
+      const sx = cx + 18, sy = cy + 72;
+
+      for(let j=0;j<b;j++){
+
+        const px = sx + (j % innerCols) * innerGap;
+
+        const py = sy + Math.floor(j / innerCols) * innerGap;
+
+        content += `<use href="#${itemId}" x="${px}" y="${py}" width="${innerSize}" height="${innerSize}"/>`;
+
+      }
+
+    }
+
+ 
+
+    return `<svg viewBox="0 0 ${W} ${H}" width="100%" height="auto">${svgDefs(pal)}${bg}${content}</svg>`;
+
+  }
+
+ 
+
+  // --- DIV (2 containers per row; remainder badge on RIGHT) ---
+
+  function svgDiv(a,b,theme){
+
+    const pal = PALETTES[theme.palette] || PALETTES.warm;
+
+    const itemId = theme.item;
+
+    const contId = theme.container;
+
+ 
+
+    const groups = b;
+
+    const {q, r} = divWithRemainder(a,b);
+
+ 
+
+    const perRow = 2;
+
+    const contW = 150, contH = 160, gapX = 22, gapY = 22;
+
+ 
+
+    const topY = 70;
+
+    const leftX = 22, leftW = 380, leftH = 280;
+
+ 
+
+    const gridX = 470;
+
+    const rows = Math.ceil(groups / perRow);
+
+ 
+
+    const rightW = 28 + perRow*contW + (perRow-1)*gapX + 28;
+
+    const rightH = 28 + rows*contH + (rows-1)*gapY + 28;
+
+ 
+
+    // remainder badge lives in the right panel header area
+
+    const remBadgeH = (r>0) ? 74 : 0;
+
+    const rightTotalH = rightH + remBadgeH;
+
+ 
+
+    const W = Math.max(860, gridX + rightW + 22);
+
+    const H = Math.max(420, topY + Math.max(leftH, rightTotalH) + 90);
+
+ 
+
+    const bg = `
+
+      <rect x="0" y="0" width="${W}" height="${H}" rx="18" fill="rgba(255,255,255,.65)"/>
+
+      <rect x="0" y="${H-96}" width="${W}" height="96" rx="18" fill="rgba(234,247,255,.85)"/>
+
+      <path d="M0 ${H-96} C200 ${H-130}, ${W-200} ${H-54}, ${W} ${H-96}" fill="rgba(77,171,247,.10)"/>
+
+    `;
+
+ 
+
+    let content = "";
+
+ 
+
+    // left panel + source container
+
+    content += `
+
+      <g transform="translate(${leftX},${topY})">
+
+        <rect x="0" y="0" width="${leftW}" height="${leftH}" rx="18"
+
+              fill="rgba(255,255,255,.62)" stroke="rgba(34,49,74,.10)"/>
+
+        <use href="#${contId}" x="120" y="40" width="150" height="190"/>
+
+      </g>
+
+    `;
+
+    content += drawItemsGrid(itemId, leftX + 140, topY + 120, a, 14, 10, 14);
+
+ 
+
+    // arrow
+
+    content += `
+
+      <path d="M410 ${topY+135} C430 ${topY+115}, 450 ${topY+115}, ${gridX} ${topY+135}"
+
+            fill="none" stroke="${pal.hi}" stroke-width="7" stroke-linecap="round"/>
+
+      <path d="${gridX} ${topY+135} L${gridX-18} ${topY+124} L${gridX-18} ${topY+146} Z" fill="${pal.hi}"/>
+
+    `;
+
+ 
+
+    // right panel background (extra top space if remainder badge exists)
+
+    const rightPanelY = topY;
+
+    const containersY = topY + remBadgeH;
+
+    content += `
+
+      <g transform="translate(${gridX},${rightPanelY})">
+
+        <rect x="0" y="0" width="${rightW}" height="${rightTotalH}" rx="18"
+
+              fill="rgba(255,255,255,.62)" stroke="rgba(34,49,74,.10)"/>
+
+      </g>
+
+    `;
+
+ 
+
+    // remainder badge ON THE RIGHT (not left)
+
+    if(r > 0){
+
+      const bx = gridX + 16;
+
+      const by = topY + 10;
+
+      content += `
+
+        <rect x="${bx}" y="${by}" width="190" height="54" rx="16"
+
+              fill="rgba(255,146,43,.12)" stroke="rgba(255,146,43,.35)"/>
+
+      `;
+
+      content += drawItemsGrid(itemId, bx + 14, by + 14, r, 14, 10, 14);
+
+    }
+
+ 
+
+    // containers (2 per row) placed below remainder badge area
+
+    for(let i=0;i<groups;i++){
+
+      const cx = (gridX+28) + (i % perRow) * (contW + gapX);
+
+      const cy = (containersY+28) + Math.floor(i / perRow) * (contH + gapY);
+
+      content += `<use href="#${contId}" x="${cx}" y="${cy}" width="${contW}" height="${contH}"/>`;
+
+ 
+
+      // fill with quotient items
+
+      const innerCols = 10, innerGap = 12, innerSize = 12;
+
+      const sx = cx + 18;
+
+      const sy = cy + 82;
+
+      for(let j=0;j<q;j++){
+
+        const px = sx + (j % innerCols) * innerGap;
+
+        const py = sy + Math.floor(j / innerCols) * innerGap;
+
+        content += `<use href="#${itemId}" x="${px}" y="${py}" width="${innerSize}" height="${innerSize}"/>`;
+
+      }
+
+    }
+
+ 
+
+    return `<svg viewBox="0 0 ${W} ${H}" width="100%" height="auto">${svgDefs(pal)}${bg}${content}</svg>`;
+
+  }
+
+ 
+
+  function renderSceneForCurrent(){
+
+    const t = current.theme;
+
+    if(current.op === "+") return svgAdd(current.a, current.b, t);
+
+    if(current.op === "-") return svgSub(current.a, current.b, t);
+
+    if(current.op === "×") return svgMul(current.a, current.b, t);
+
+    return svgDiv(current.a, current.b, t);
+
+  }
+
+ 
+
+  function updateEquationAndBadge(){
+
+    eqA.textContent = current.a;
+
+    eqB.textContent = current.b;
+
+    eqOp.textContent = opToEmoji[current.op];
+
+    sceneBadge.textContent = `${opToEmoji[current.op]}  ${current.theme.itemEmoji}  ${current.theme.containerEmoji}`;
+
+    taskKbd.textContent = `${current.a} ${current.op} ${current.b}`;
+
+  }
+
+ 
+
+  function getTaskFromUIOrPractice(){
+
+    if(mode === 1){
+
+      let a = parseInt(aIn.value || "0", 10);
+
+      let b = parseInt(bIn.value || "0", 10);
+
+      ({a,b} = normalizeTask(a,b,op));
+
+      aIn.value = a; bIn.value = b;
+
+      return {a,b,op};
+
+    }
+
+    return {a: current.a, b: current.b, op};
+
+  }
+
+ 
+
+  function newPracticeTask(){
+
+    let a=0,b=0;
+
+    if(op === "+"){ a = randInt(0, 100); b = randInt(0, 100-a); }
+
+    else if(op === "-"){ a = randInt(0, 100); b = randInt(0, a); }
+
+    else if(op === "×"){
+
+      a = randInt(0, 12); b = randInt(0, 12);
+
+      while(a*b > 100){ a = randInt(0,12); b = randInt(0,12); }
+
+    }
+
+    else if(op === "÷"){
+
+      b = randInt(1, 12);
+
+      a = randInt(0, 100);
+
+    }
+
+    current.a = a; current.b = b;
+
+    presetTask.value = `${a} ${op} ${b}`;
 
   }
 
@@ -2020,35 +2026,29 @@
 
   function buildAll(){
 
-    let a = parseInt(aIn.value || "0", 10);
+    syncAnswerInputs();
 
-    let b = parseInt(bIn.value || "0", 10);
-
-    ({a,b} = normalizeTask(a,b,op));
+    setFeedback("", "");
 
  
 
-    aIn.value = a;
-
-    bIn.value = b;
+    const {a,b} = getTaskFromUIOrPractice();
 
  
+
+    current.a = a; current.b = b; current.op = op;
 
     current.theme = pickTheme();
 
-    current.a = a;
-
-    current.b = b;
-
-    current.op = op;
+    current.valid = taskWithinRange(a,b,op);
 
  
 
-    current.steps = buildSteps(a,b,op);
+    // reset steps
+
+    current.steps = buildStepsForTask(a,b,op);
 
     current.stepIndex = 0;
-
- 
 
     stepsBox.classList.remove("show");
 
@@ -2058,71 +2058,95 @@
 
     bulbBtn.disabled = false;
 
-    bulbBtn.style.opacity = 1;
+ 
 
-    bulbBtn.style.cursor = "pointer";
+    updateEquationAndBadge();
 
  
 
-    sceneBadge.textContent = `${opToEmoji[op]}  ${current.theme.itemEmoji}  ${current.theme.containerEmoji}`;
+    if(!current.valid){
 
-    sceneSvg.innerHTML = svgScene(a,b,op,current.theme);
+      sceneSvg.innerHTML = "";
 
- 
+      setFeedback("warn", "Achtung, Zahlenraum wird überschritten");
 
-    taskKbd.textContent = `${a} ${op} ${b}`;
+      return;
 
-    eqA.textContent = a;
-
-    eqB.textContent = b;
-
-    eqOp.textContent = opToEmoji[op];
+    }
 
  
 
-    answerIn.value = "";
-
-    setFeedback("", "");
+    sceneSvg.innerHTML = renderSceneForCurrent();
 
   }
 
  
 
-  function newRandomTask(){
+  function checkDefault(){
 
-    let a = randInt(0, 100);
+    if(!current.valid){ setFeedback("warn","Achtung, Zahlenraum wird überschritten"); return; }
 
-    let b = randInt(0, 100);
+    const v = answerIn.value.trim();
+
+    if(v===""){ setFeedback("bad","Bitte Ergebnis eintragen."); return; }
+
+    const n = Number(v);
+
+    if(!Number.isFinite(n) || !Number.isInteger(n) || n<0 || n>100){ setFeedback("bad","Bitte eine ganze Zahl von 0 bis 100 eingeben."); return; }
+
+    const corr = computeResult(current.a,current.b,current.op).value;
+
+    setFeedback(n===corr ? "good":"bad", n===corr ? "✅ Richtig!" : "❌ Noch nicht.");
+
+  }
 
  
 
-    if(op === "×"){ a = randInt(0, 12); b = randInt(0, 12); }
+  function checkDivision(){
 
-    if(op === "÷"){
+    if(!current.valid){ setFeedback("warn","Achtung, Zahlenraum wird überschritten"); return; }
 
-      b = randInt(1, 12);
+    const qv = quotIn.value.trim(), rv = restIn.value.trim();
 
-      const k = randInt(1, Math.max(1, Math.floor(100 / b)));
+    if(qv==="" || rv===""){ setFeedback("bad","Bitte Ergebnis und Rest eintragen."); return; }
 
-      a = b * k;
+    const q = Number(qv), r = Number(rv);
 
-      if(a > 100) a = Math.floor(100 / b) * b;
+    if(!Number.isFinite(q) || !Number.isFinite(r) || !Number.isInteger(q) || !Number.isInteger(r) || q<0 || r<0){
 
-      if(a === 0) a = b;
+      setFeedback("bad","Bitte ganze Zahlen (nicht negativ) eingeben."); return;
 
     }
 
-    if(op === "-" && b > a){ [a,b] = [b,a]; }
+    if(r >= current.b){ setFeedback("bad","❌ Rest muss kleiner als die zweite Zahl sein."); return; }
+
+    const corr = divWithRemainder(current.a,current.b);
+
+    setFeedback((q===corr.q && r===corr.r) ? "good":"bad", (q===corr.q && r===corr.r) ? "✅ Richtig!" : "❌ Noch nicht.");
+
+  }
 
  
 
-    aIn.value = a;
+  function setMode(newMode){
 
-    bIn.value = b;
+    mode = newMode;
 
-    updateTaskLabel();
+    mode1Btn.classList.toggle("active", mode===1);
 
-    updateEquation();
+    mode2Btn.classList.toggle("active", mode===2);
+
+    mode1Panel.classList.toggle("hidden", mode!==1);
+
+    mode2Panel.classList.toggle("hidden", mode!==2);
+
+    if(mode===2){
+
+      if(presetTask.value==="—") newPracticeTask();
+
+    }
+
+    buildAll();
 
   }
 
@@ -2130,105 +2154,91 @@
 
   function resetAll(){
 
+    mode = 1;
+
     op = "+";
-
-    opBtns.forEach(b => {
-
-      const is = b.dataset.op === "+";
-
-      b.classList.toggle("active", is);
-
-      b.setAttribute("aria-selected", is ? "true":"false");
-
-    });
-
- 
 
     aIn.value = 15;
 
     bIn.value = 7;
 
- 
+    presetTask.value = "—";
 
-    current.theme = null;
-
-    current.steps = [];
-
-    current.stepIndex = 0;
+    current = { a: 15, b: 7, op:"+", steps:[], stepIndex:0, theme:null, valid:true };
 
  
 
-    sceneBadge.textContent = "—";
+    opBtns.forEach(btn=>{
 
-    sceneSvg.innerHTML = "";
+      const active = btn.dataset.op === op;
 
- 
+      btn.classList.toggle("active", active);
 
-    stepsBox.classList.remove("show");
-
-    stepsBox.innerHTML = "";
+    });
 
  
 
-    bulbBtn.innerHTML = `<span class="bulb" aria-hidden="true">💡</span> Hilfe`;
+    mode1Btn.classList.add("active");
 
-    bulbBtn.disabled = false;
+    mode2Btn.classList.remove("active");
 
- 
+    mode1Panel.classList.remove("hidden");
 
-    answerIn.value = "";
-
-    setFeedback("", "");
+    mode2Panel.classList.add("hidden");
 
  
 
-    updateTaskLabel();
-
-    updateEquation();
+    buildAll();
 
   }
 
  
 
-  function checkAnswer(){
+  // Events
 
-    const userVal = answerIn.value.trim();
+  mode1Btn.addEventListener("click", ()=> setMode(1));
 
-    if(userVal === ""){
+  mode2Btn.addEventListener("click", ()=> setMode(2));
 
-      setFeedback("bad", "Bitte trage erst ein Ergebnis ein.");
+ 
 
-      return;
+  opBtns.forEach(btn => btn.addEventListener("click", () => {
 
-    }
+    opBtns.forEach(b => b.classList.remove("active"));
 
-    const userNum = Number(userVal);
+    btn.classList.add("active");
 
-    if(Number.isNaN(userNum) || !Number.isFinite(userNum)){
+    op = btn.dataset.op;
 
-      setFeedback("bad", "Das ist keine gültige Zahl.");
+ 
 
-      return;
+    // keep division valid input bounds
 
-    }
+    if(op === "÷" && (parseInt(bIn.value||"0",10) === 0)) bIn.value = 1;
 
-    const correct = computeResult(current.a, current.b, current.op);
+ 
 
-    const ok = Math.abs(userNum - correct) < 1e-9;
+    if(mode === 2) newPracticeTask();
 
-    setFeedback(ok ? "good" : "bad", ok ? "✅ Richtig!" : "❌ Noch nicht.");
+    buildAll();
 
-  }
+  }));
 
  
 
   [aIn, bIn].forEach(inp => inp.addEventListener("input", () => {
 
-    inp.value = clamp(parseInt(inp.value || "0", 10), 0, RANGE_MAX);
+    // clamp and keep div not zero
 
-    updateTaskLabel();
+    let a = parseInt(aIn.value||"0",10);
 
-    updateEquation();
+    let b = parseInt(bIn.value||"0",10);
+
+    ({a,b} = normalizeTask(a,b,op));
+
+    aIn.value = a; bIn.value = b;
+
+    buildAll();
 
   }));
 
@@ -2236,33 +2246,27 @@
 
   buildBtn.addEventListener("click", buildAll);
 
-  randomBtn.addEventListener("click", () => { newRandomTask(); buildAll(); });
-
   resetBtn.addEventListener("click", resetAll);
+
+ 
+
+  newPracticeBtn.addEventListener("click", () => { newPracticeTask(); buildAll(); });
+
+  buildPracticeBtn.addEventListener("click", buildAll);
 
  
 
   bulbBtn.addEventListener("click", revealNextStep);
 
-  checkBtn.addEventListener("click", checkAnswer);
+ 
+
+  checkBtn.addEventListener("click", checkDefault);
+
+  checkDivBtn.addEventListener("click", checkDivision);
 
  
 
-  document.addEventListener("keydown", (e) => {
-
-    if(e.key === "Enter"){
-
-      const activeId = document.activeElement?.id || "";
-
-      if(activeId === "answerIn") checkAnswer();
-
-      else buildAll();
-
-    }
-
-  });
-
- 
+  // init
 
   resetAll();
 
